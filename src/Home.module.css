@@ -40,7 +40,7 @@
   color: white;
   opacity: 0.8;
   margin-left: 10px;
-  max-width: 420px;
+  max-width: 25.5em;
 }
 
 .sectionCard {
@@ -176,7 +176,11 @@
 }
 
 .articleItem p {
- 
+  margin-bottom: 1rem;
+}
+
+.articleItem a {
+  color: #28A1FD;
 }
 
 .logo {
@@ -185,6 +189,22 @@
   top: 18px;
   height: 88px;
   width: 88px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+}
+
+.titleRow svg {
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+
+.titleRow span {
+  font-size: 2rem;
+  margin-bottom: 0.2em;
+  margin-right: 0.5em;
 }
 
 @media (max-width: 767px) {

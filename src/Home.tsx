@@ -7,6 +7,8 @@ import Plants from './assets/plants.jpg';
 import Image from './components/Image';
 import MyelIcon from './assets/MyelIcon.png';
 import GradientBg from './assets/gradient-bg.jpg';
+import MacWindowIcon from './components/MacWidowIcon';
+import ShippingBoxIcon from './components/ShippingBoxIcon';
 
 export default function Home() {
   return (
@@ -30,8 +32,7 @@ export default function Home() {
               Myel
             </h1>
             <p className={styles.sectionSubtitle}>
-              Earn crypto. Power the world's first decentralized content
-              delivery network.
+              Community Powered Content Delivery Network.
             </p>
           </div>
         </section>
@@ -45,40 +46,56 @@ export default function Home() {
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
-                Myel leverages the sharing economy to deliver the world's
-                information. All you have to do is keep the app running on your
-                computer. You get a share of the entire network's retrieval
-                deals revenues.
+                Future media applications such as VR games, video streaming and
+                rich content publishing platforms require flexible and powerful
+                content delivery tools like never before. We help developers
+                bring and scale performant new experiences to the entire world
+                without relying on expensive server side infrastructures.
               </h2>
             </header>
             <div className={styles.articleBody}>
               <section className={styles.articleItem}>
-                <h3>🐸 Hop Exchange</h3>
+                <div className={styles.titleRow}>
+                  <span>🐸</span>
+                  <h3>Hop Exchange</h3>
+                </div>
                 <p>
-                  Myel is a tool not a service. Once you have the app and an
-                  internet connection, nothing can stop you from accessing the
-                  network. We build our software for longevity. If our
-                  organisation went to disapear, you should still be able to use
-                  it.
+                  Speed up content retrieval from Filecoin and get paid for
+                  running a node with our plugin and library for go-ipfs. Hop
+                  exchange connects to a secondary retrieval market to provide
+                  and retrieve content from the fastest peers. The plugin is
+                  light weight and does not require running a lotus node.
                 </p>
+                <a href="/">Learn more about the Hop exchange</a>
               </section>
               <section className={styles.articleItem}>
-                <h3>Run it.</h3>
+                <div className={styles.titleRow}>
+                  <MacWindowIcon fill="#AB40FF" />
+                  <h3>Myel for MacOS</h3>
+                </div>
                 <p>
                   The Myel app opens like any Finder window. You can upload and
                   access your files in a simple and robust interface. Content is
                   automatically broken down and persisted across the network. In
-                  the background the app serves content to whomever requests it
-                  and you get paid for every request.
+                  the background the app runs an IPFS node with the Hop exchange
+                  to serve content to whomever requests it and get paid for
+                  every request.
                 </p>
+                <a href="/">Learn more about Myel for MacOS</a>
               </section>
               <section className={styles.articleItem}>
-                <h3>Forget it.</h3>
+                <div className={styles.titleRow}>
+                  <ShippingBoxIcon fill="#FB7008" />
+                  <h3>myel.js</h3>
+                </div>
                 <p>
-                  As the app optimizes usage of your available local storage,
-                  you will automatically earn some revenues. Nothing can shut it
-                  down. There is no central point of failure.
+                  Interact with the Myel network in your applications to improve
+                  reliability and speed when distributing memory intensive
+                  content. Our JavaScript client requests users to download the
+                  Myel App for better performance but you can also host your own
+                  IPFS node with the Hop Exchange plugin.
                 </p>
+                <a href="/">Learn more about myel.js</a>
               </section>
             </div>
           </article>
