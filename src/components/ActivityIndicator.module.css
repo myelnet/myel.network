@@ -1,0 +1,17 @@
+.indicator {
+  animation-timing-function: linear;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-duration: 0.75s;
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

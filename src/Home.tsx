@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import styles from './Home.module.css';
 
-import PlantsLowres from './assets/plants_lowres.jpg';
-import Plants from './assets/plants.jpg';
+/* import PlantsLowres from './assets/plants_lowres.jpg'; */
+/* import Plants from './assets/plants.jpg'; */
 import Image from './components/Image';
 import MyelIcon from './assets/MyelIcon.png';
 import GradientBg from './assets/gradient-bg.jpg';
@@ -46,11 +46,11 @@ export default function Home() {
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
-                Future media applications such as VR games, video streaming and
-                rich content publishing platforms require flexible and powerful
-                content delivery tools like never before. We help developers
-                bring and scale performant new experiences to the entire world
-                without relying on expensive server side infrastructures.
+                Virtual reality games, video streaming, and other rich content
+                require flexible and powerful content delivery tools like never
+                before. We help developers bring and scale performant new
+                experiences to the entire world without relying on expensive
+                server side infrastructures.
               </h2>
             </header>
             <div className={styles.articleBody}>
@@ -61,10 +61,9 @@ export default function Home() {
                 </div>
                 <p>
                   Speed up content retrieval from Filecoin and get paid for
-                  running a node with our plugin and library for go-ipfs. Hop
-                  exchange connects to a secondary retrieval market to provide
-                  and retrieve content from the fastest peers. The plugin is
-                  light weight and does not require running a lotus node.
+                  running a Myel node with our plugin and library for go-ipfs.
+                  Hop exchange connects to a secondary retrieval market to
+                  provide and retrieve content from the fastest peers.
                 </p>
                 <a href="/">Learn more about the Hop exchange</a>
               </section>
@@ -74,12 +73,11 @@ export default function Home() {
                   <h3>Myel for MacOS</h3>
                 </div>
                 <p>
-                  The Myel app opens like any Finder window. You can upload and
-                  access your files in a simple and robust interface. Content is
-                  automatically broken down and persisted across the network. In
-                  the background the app runs an IPFS node with the Hop exchange
-                  to serve content to whomever requests it and get paid for
-                  every request.
+                  The Myel app operates like any Finder window. You can use it
+                  to backup and share files. Content is automatically broken
+                  down and persisted across the Myel network. The application
+                  runs a Hop exchange node to serve content to whomever requests
+                  it and gets paid for every request.
                 </p>
                 <a href="/">Learn more about Myel for MacOS</a>
               </section>

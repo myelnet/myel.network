@@ -233,6 +233,13 @@
 .cardImg {
   height: 444px;
 }
+.sectionHero {
+  padding-bottom: 120px;
+}
+
+.article {
+  padding-top: 120px;
+}
 }
 
 @media (max-width: 734px) {

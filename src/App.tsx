@@ -1,19 +1,21 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Home from './Home';
-import SignUp from './SignUp';
+const Home = lazy(() => import('./Home'));
+const SignUp = lazy(() => import('./SignUp'));
 
 export default function App() {
   return (
     <div className="App">
       <Nav />
-      <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="" element={<Home />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </div>
   );
