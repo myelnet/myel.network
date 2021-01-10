@@ -1,0 +1,161 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 56px;
+  z-index: 1994;
+  transition-property: background-color, backdrop-filter;
+  transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1), height 0.5s cubic-bezier(0.28, 0.11, 0.32, 1) 0.4s;
+}
+
+.navContent {
+  padding-left: calc(max(22px, env(safe-area-inset-left)));
+  padding-right: calc(max(22px, env(safe-area-inset-right)));
+  margin: auto;
+  max-width: 1024px;
+  height: 100%;
+  padding: 0 22px;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.navTitle {
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+
+.navMenu {
+  display: flex;
+  flex: 1;
+}
+
+.navItems {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navItem {
+  margin-left: 24px;
+}
+
+.navBtn {
+  margin-left: 24px;
+}
+
+.navBtn a {
+  border: solid 1px #FFF;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 8px 16px 8px 16px;
+}
+
+.navTitle a {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.navBar a {
+  opacity: .8;
+}
+
+.navItem a {
+  color: white;
+}
+
+.navMenu a {
+  font-size: 0.8rem;
+  opacity: 1;
+  transition: all 200ms cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.navMenu a:hover {
+  opacity: 0.8;
+}
+
+.navMenuActive {
+  opacity: 0.5;
+}
+
+.navScrolled {
+  background-color: rgba(29,29,31,0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.navChevron {
+  display: none;
+  transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1)
+}
+
+@media only screen and (max-width: 767px) {
+  .navContent {
+    padding: 0 16px;
+    flex-direction: column;
+  }
+
+  .navItems {
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navItems.navItemsOpen {
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .navAction {
+    padding: 16px 8px 16px 16px;
+    position: absolute;
+    right: 16px;
+    top: 0;
+  }
+
+  .navChevron {
+    display: block;
+  }
+
+  .navBarOpen {
+    height: 188px;
+  }
+
+  .navBarOpen .navChevron {
+    transform: rotate(180deg);
+  }
+
+  .navMenu {
+    height: 0;
+  }
+
+  .navBarOpen.navMenu {
+    height: auto;
+  }
+
+  .navItem {
+    margin-bottom: 24px;
+  }
+
+  .navBtn {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .navBtn a {
+    width: 100%;
+    text-align: center;
+  }
+
+
+}
