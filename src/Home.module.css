@@ -42,6 +42,11 @@
   margin: auto;
 }
 
+.sectionPlaceholder {
+  display: flex;
+  justify-content: center;
+}
+
 .sectionTitle {
   font-size: 4em;
   font-weight: 700;
