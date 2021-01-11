@@ -43,14 +43,16 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className={styles.section}>
-          <Image
-            alt="background"
-            src={GradientBg}
-            ratio="sans"
-            plh={GradientBgPlh}
-            className={styles.background}
-          />
+        <section className={`${styles.section} ${styles.section2}`}>
+          <div className={styles.background}>
+            <Image
+              alt="background"
+              src={GradientBg}
+              ratio="sans"
+              plh={GradientBgPlh}
+              className={styles.backgroundImage}
+            />
+          </div>
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
