@@ -6,7 +6,9 @@ import styles from './Home.module.css';
 /* import Plants from './assets/plants.jpg'; */
 import Image from './components/Image';
 import MyelIcon from './assets/MyelIcon.png';
+import MyelIconPlh from './assets/MyelIcon_lowres.png';
 import GradientBg from './assets/gradient-bg.jpg';
+import GradientBgPlh from './assets/gradient-bg_lowres.png';
 import MacWindowIcon from './components/MacWidowIcon';
 import ShippingBoxIcon from './components/ShippingBoxIcon';
 
@@ -27,7 +29,12 @@ export default function Home() {
           <div className={styles.sectionContent}>
             <h1 className={styles.sectionTitle}>
               <div className={styles.logo}>
-                <Image alt="Myel icon" src={MyelIcon} ratio="high" />
+                <Image
+                  alt="Myel icon"
+                  src={MyelIcon}
+                  ratio="high"
+                  plh={MyelIconPlh}
+                />
               </div>{' '}
               Myel
             </h1>
@@ -41,6 +48,7 @@ export default function Home() {
             alt="background"
             src={GradientBg}
             ratio="sans"
+            plh={GradientBgPlh}
             className={styles.background}
           />
           <article className={styles.article}>
