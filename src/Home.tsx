@@ -73,7 +73,9 @@ export default function Home() {
                   Hop exchange connects to a secondary retrieval market to
                   provide and retrieve content from the fastest peers.
                 </p>
-                <a href="/">Learn more about the Hop exchange</a>
+                <a href="https://myel.dev/#/blog/intro">
+                  Learn more about the Hop exchange
+                </a>
               </section>
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>
@@ -87,7 +89,9 @@ export default function Home() {
                   runs a Hop exchange node to serve content to whomever requests
                   it and gets paid for every request.
                 </p>
-                <a href="/">Learn more about Myel for MacOS</a>
+                <a href="https://myel.dev/#/blog/intro">
+                  Learn more about Myel for MacOS
+                </a>
               </section>
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>
@@ -101,7 +105,9 @@ export default function Home() {
                   Myel App for better performance but you can also host your own
                   IPFS node with the Hop Exchange plugin.
                 </p>
-                <a href="/">Learn more about myel.js</a>
+                <a href="https://myel.dev/#/blog/intro">
+                  Learn more about myel.js
+                </a>
               </section>
             </div>
           </article>
