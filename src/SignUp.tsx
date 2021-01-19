@@ -48,6 +48,8 @@ export default function SignUp() {
   const submit = () => {
     set('sending');
     postForm();
+    // @ts-ignore
+    window.sa_event?.('signup');
   };
   return (
     <div className={styles.container}>
