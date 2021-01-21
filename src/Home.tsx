@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
                 <p>
 		  The Hop Exchange allows for any IPFS node to deliver content on the Myel network and get paid.  
-		  Under the hood, this plugin and library for go-ipfs connects to a secondary Filecoin retrieval market to
+		  Under the hood, this plugin for go-ipfs connects to a secondary Filecoin retrieval market to
                   serve and retrieve content.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
@@ -82,8 +82,8 @@ export default function Home() {
                   <h3>Myel for MacOS</h3>
                 </div>
                 <p>
-                  Become a Myel peer with our clean and simple MacOS application. 
-		  The application runs a Hop Exchange node to serve content to whomever requests it and you get paid for every request.
+                  Become a Myel peer with our simple MacOS application. 
+		  The application runs a Hop Exchange node to serve content to whomever requests it and gets paid for every request.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about Myel for MacOS
