@@ -68,8 +68,8 @@ export default function Home() {
                   <h3>Hop Exchange</h3>
                 </div>
                 <p>
-		  The Hop Exchange allows for any IPFS node to deliver content on the Myel network and get paid.  
-		  Under the hood, this plugin for go-ipfs connects to a secondary Filecoin retrieval market to
+		  Enhance your IPFS node to deliver content on the Myel network and get paid with the Hop Exchange go-ipfs plugin.
+		  Under the hood, this plugin connects to a secondary Filecoin retrieval market to
                   serve and retrieve content.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
