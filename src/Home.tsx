@@ -58,7 +58,7 @@ export default function Home() {
               <h2>
                 We help developers bring and scale new
                 experiences to the entire world without relying on expensive
-                server side infrastructures.
+                server side infrastructure.
               </h2>
             </header>
             <div className={styles.articleBody}>
