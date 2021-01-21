@@ -56,9 +56,7 @@ export default function Home() {
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
-                Virtual reality games, video streaming, and other rich content
-                require flexible and powerful content delivery tools like never
-                before. We help developers bring and scale performant new
+                We help developers bring and scale new
                 experiences to the entire world without relying on expensive
                 server side infrastructures.
               </h2>
@@ -70,10 +68,9 @@ export default function Home() {
                   <h3>Hop Exchange</h3>
                 </div>
                 <p>
-                  Speed up content retrieval from Filecoin and get paid for
-                  running a Myel node with our plugin and library for go-ipfs.
-                  Hop exchange connects to a secondary retrieval market to
-                  provide and retrieve content from the fastest peers.
+		  Enhance your IPFS node to deliver content on the Myel network and get paid with the Hop Exchange go-ipfs plugin.
+		  Under the hood this plugin connects to a secondary Filecoin retrieval market to
+                  serve and retrieve content.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about the Hop exchange
@@ -85,11 +82,8 @@ export default function Home() {
                   <h3>Myel for MacOS</h3>
                 </div>
                 <p>
-                  The Myel app operates like any Finder window. You can use it
-                  to backup and share files. Content is automatically broken
-                  down and persisted across the Myel network. The application
-                  runs a Hop exchange node to serve content to whomever requests
-                  it and gets paid for every request.
+                  Become a Myel peer with our simple MacOS application. 
+		  The application runs a Hop Exchange node to serve content to whomever requests it and gets paid for every request.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about Myel for MacOS
@@ -103,9 +97,7 @@ export default function Home() {
                 <p>
                   Interact with the Myel network in your applications to improve
                   reliability and speed when distributing memory intensive
-                  content. Our JavaScript client requests users to download the
-                  Myel App for better performance but you can also host your own
-                  IPFS node with the Hop Exchange plugin.
+                  content. 
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about myel.js
