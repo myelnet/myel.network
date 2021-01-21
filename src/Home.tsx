@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
                 <p>
 		  Enhance your IPFS node to deliver content on the Myel network and get paid with the Hop Exchange go-ipfs plugin.
-		  Under the hood, this plugin connects to a secondary Filecoin retrieval market to
+		  Under the hood this plugin connects to a secondary Filecoin retrieval market to
                   serve and retrieve content.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
