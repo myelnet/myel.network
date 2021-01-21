@@ -56,7 +56,7 @@ export default function Home() {
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
-                The Myel network help developers bring and scale new
+                We help developers bring and scale new
                 experiences to the entire world without relying on expensive
                 server side infrastructures.
               </h2>
