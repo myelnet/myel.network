@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import styles from './Home.module.css';
 
-/* import PlantsLowres from './assets/plants_lowres.jpg'; */
-/* import Plants from './assets/plants.jpg'; */
 import Image from './components/Image';
 import MyelIcon from './assets/MyelIcon.png';
 import MyelIconPlh from './assets/MyelIcon_lowres.png';
@@ -15,15 +13,6 @@ import ShippingBoxIcon from './components/ShippingBoxIcon';
 export default function Home() {
   return (
     <>
-      {/*
-      <Image
-        alt="Plants"
-        src={Plants}
-        plh={PlantsLowres}
-        ratio="sans"
-        className={styles.background}
-      />
-	*/}
       <main className={styles.overviewContainer}>
         <section className={`${styles.section} ${styles.sectionHero}`}>
           <div className={styles.sectionContent}>
@@ -56,25 +45,24 @@ export default function Home() {
           <article className={styles.article}>
             <header className={styles.articleHeader}>
               <h2>
-                We help developers bring and scale new
-                experiences to the entire world without relying on expensive
-                server side infrastructure.
+                We help developers deploy and scale new experiences to the
+                entire world without relying on expensive server side
+                infrastructure.
               </h2>
             </header>
             <div className={styles.articleBody}>
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>
-                  <span>🐸</span>
-                  <h3>Hop Exchange</h3>
+                  <span>🍿</span>
+                  <h3>Pop</h3>
                 </div>
                 <p>
-		  Enhance your IPFS node to deliver content on the Myel network and get paid with the Hop Exchange go-ipfs plugin.
-		  Under the hood this plugin connects to a secondary Filecoin retrieval market to
-                  serve and retrieve content.
+                  Run a Myel point of presence and get paid to deliver content
+                  on Filecoin and IPFS. With distributions for MacOS and Linux,
+                  the Pop command line interface allows developers to publish
+                  and retrieve content from a network of cache providers.
                 </p>
-                <a href="https://myel.dev/#/blog/intro">
-                  Learn more about the Hop exchange
-                </a>
+                <a href="https://myel.dev/#/blog/intro">Learn more about POP</a>
               </section>
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>
@@ -82,8 +70,9 @@ export default function Home() {
                   <h3>Myel for MacOS</h3>
                 </div>
                 <p>
-                  Become a Myel peer with our simple MacOS application. 
-		  The application runs a Hop Exchange node to serve content to whomever requests it and gets paid for every request.
+                  Manage your Myel point of presence with our simple MacOS
+                  application. The application runs a Pop node to serve content
+                  to whomever requests it and gets paid for every request.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about Myel for MacOS
@@ -97,7 +86,7 @@ export default function Home() {
                 <p>
                   Interact with the Myel network in your applications to improve
                   reliability and speed when distributing memory intensive
-                  content. 
+                  content.
                 </p>
                 <a href="https://myel.dev/#/blog/intro">
                   Learn more about myel.js
