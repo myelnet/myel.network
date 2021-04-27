@@ -62,7 +62,9 @@ export default function Home() {
                   the Pop command line interface allows developers to publish
                   and retrieve content from a network of cache providers.
                 </p>
-                <a href="https://myel.dev/#/blog/intro">Learn more about POP</a>
+                <a href="https://myel.dev/#/blog/tech-update-1">
+                  Learn more about POP
+                </a>
               </section>
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>

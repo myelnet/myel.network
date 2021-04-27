@@ -23,9 +23,7 @@ export default function Footer() {
             <h6>Product</h6>
             <ul>
               <li>
-                <a href="https://github.com/myelnet/go-hop-exchange">
-                  Hop Exchange
-                </a>
+                <a href="https://github.com/myelnet/pop">PoP</a>
               </li>
               <li>Myel for MacOS (coming soon)</li>
               <li>myel.js (coming soon)</li>
