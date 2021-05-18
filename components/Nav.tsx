@@ -1,8 +1,32 @@
 import * as React from 'react';
+import {Children} from 'react';
 import {useEffect, useRef, useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {useRouter} from 'next/router';
+import Link from 'next/link';
 import styles from './Nav.module.css';
-import ChevronDownIcon from '../components/ChevronDownIcon';
+import ChevronDownIcon from './ChevronDownIcon';
+
+function NavLink({children, activeClassName, ...props}) {
+  const {asPath} = useRouter();
+  const child = Children.only(children);
+  const childClassName = child.props.className || '';
+
+  // pages/index.js will be matched via props.href
+  // pages/about.js will be matched via props.href
+  // pages/[slug].js will be matched via props.as
+  const className =
+    asPath === props.href || asPath === props.as
+      ? `${childClassName} ${activeClassName}`.trim()
+      : childClassName;
+
+  return (
+    <Link {...props}>
+      {React.cloneElement(child, {
+        className: className || null,
+      })}
+    </Link>
+  );
+}
 
 export default function Nav() {
   const ref = useRef<HTMLElement>(null);
@@ -37,7 +61,9 @@ export default function Nav() {
       ref={ref}>
       <div className={styles.navContent}>
         <div className={styles.navTitle}>
-          <NavLink to="/">Myel</NavLink>
+          <Link href="/">
+            <a>Myel</a>
+          </Link>
         </div>
         <div className={styles.navMenu}>
           <ul
@@ -47,11 +73,8 @@ export default function Nav() {
                 : styles.navItems
             }>
             <li className={styles.navBtn}>
-              <NavLink
-                to="/sign-up"
-                activeClassName={styles.navMenuActive}
-                onClick={() => setOpen(false)}>
-                Request early access
+              <NavLink href="/sign-up" activeClassName={styles.navMenuActive}>
+                <a onClick={() => setOpen(false)}>Request early access</a>
               </NavLink>
             </li>
           </ul>

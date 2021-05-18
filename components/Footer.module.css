@@ -14,14 +14,16 @@
 
 .footer p {
   margin-bottom: 1rem;
+ color: #a1a1a6;
 }
 
-.footer a, li, p {
+.footer a {
  color: #a1a1a6;
  }
 
 .footer li {
   margin-bottom: 0.5em;
+ color: #a1a1a6;
 }
 
 .content {
