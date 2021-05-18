@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
-import NextButton from './components/NextButton';
-import ActivityIndicator from './components/ActivityIndicator';
+import NextButton from '../components/NextButton';
+import ActivityIndicator from '../components/ActivityIndicator';
 import styles from './SignUp.module.css';
 import fleekStorage from '@fleekhq/fleek-storage-js';
 

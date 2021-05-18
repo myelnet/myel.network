@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
             <p>Community powered content delivery network</p>
             <ul>
               <li>
-                <Link to="/sign-up">Request access</Link>
+                <Link href="/sign-up">Request access</Link>
               </li>
               <li>
                 <a href="https://myel.dev/#/blog">Blog</a>
@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <h6>Contact</h6>
             <ul>
-              <li>thomas at myel.dev</li>
+              <li>hello@myel.dev</li>
             </ul>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default function Footer() {
           <div className={styles.border} />
           <div className={styles.copyright}>
             <div>Copyright © 2021 Myel Inc. All rights reserved.</div>
-            <div>London, UK</div>
+            <div>Planet Earth</div>
           </div>
         </div>
       </div>

@@ -2,13 +2,9 @@ import * as React from 'react';
 
 import styles from './Home.module.css';
 
-import Image from './components/Image';
-import MyelIcon from './assets/MyelIcon.png';
-import MyelIconPlh from './assets/MyelIcon_lowres.png';
-import GradientBg from './assets/gradient-bg.jpg';
-import GradientBgPlh from './assets/gradient-bg_lowres.png';
-import MacWindowIcon from './components/MacWidowIcon';
-import ShippingBoxIcon from './components/ShippingBoxIcon';
+import Image from '../components/Image';
+import MacWindowIcon from '../components/MacWidowIcon';
+import ShippingBoxIcon from '../components/ShippingBoxIcon';
 
 export default function Home() {
   return (
@@ -20,9 +16,9 @@ export default function Home() {
               <div className={styles.logo}>
                 <Image
                   alt="Myel icon"
-                  src={MyelIcon}
+                  src="/MyelIcon.png"
                   ratio="high"
-                  plh={MyelIconPlh}
+                  plh="/MyelIcon_lowres.png"
                 />
               </div>{' '}
               Myel
@@ -36,9 +32,9 @@ export default function Home() {
           <div className={styles.background}>
             <Image
               alt="background"
-              src={GradientBg}
+              src="/gradient-bg.jpg"
               ratio="sans"
-              plh={GradientBgPlh}
+              plh="/gradient-bg_lowres.png"
               className={styles.backgroundImage}
             />
           </div>
@@ -54,7 +50,7 @@ export default function Home() {
               <section className={styles.articleItem}>
                 <div className={styles.titleRow}>
                   <span>🍿</span>
-                  <h3>Pop</h3>
+                  <h3>POP</h3>
                 </div>
                 <p>
                   Run a Myel point of presence and get paid to deliver content
