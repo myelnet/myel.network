@@ -30,7 +30,8 @@ export default function SignUp() {
   const postForm = async () => {
     const payload = {
       email,
-      details: desc,
+      description: desc,
+      'form-name': 'signup-form',
     };
     try {
       await fetch('/', {
@@ -83,7 +84,7 @@ export default function SignUp() {
           </p>
         </div>
       ) : (
-        <form className={styles.form}>
+        <form className={styles.form} data-netlify="true" name="signup-form">
           <div className={styles.inputElement}>
             <input
               name="email"
