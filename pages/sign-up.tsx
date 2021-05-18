@@ -3,7 +3,6 @@ import {useState} from 'react';
 import NextButton from '../components/NextButton';
 import ActivityIndicator from '../components/ActivityIndicator';
 import styles from './SignUp.module.css';
-import fleekStorage from '@fleekhq/fleek-storage-js';
 
 type State = 'idle' | 'sending' | 'success' | 'error';
 
@@ -34,12 +33,16 @@ export default function SignUp() {
       details: desc,
     };
     try {
-      const {hash} = await fleekStorage.upload({
-        ...credentials,
-        key: `${email?.split('@')[0]}-${FILE_KEY}`,
-        data: JSON.stringify(payload),
+      await fetch('/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: Object.keys(payload)
+          .map(
+            (key) =>
+              encodeURIComponent(key) + '=' + encodeURIComponent(payload[key])
+          )
+          .join('&'),
       });
-      console.log(hash);
       set('success');
     } catch (e) {
       set('error');

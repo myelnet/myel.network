@@ -1,4 +1,5 @@
 import * as React from 'react';
+import NImage from 'next/image';
 
 import styles from './Home.module.css';
 
@@ -14,11 +15,11 @@ export default function Home() {
           <div className={styles.sectionContent}>
             <h1 className={styles.sectionTitle}>
               <div className={styles.logo}>
-                <Image
+                <NImage
                   alt="Myel icon"
                   src="/MyelIcon.png"
-                  ratio="high"
-                  plh="/MyelIcon_lowres.png"
+                  height={88}
+                  width={88}
                 />
               </div>{' '}
               Myel
