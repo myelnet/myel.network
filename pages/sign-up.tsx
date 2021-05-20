@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useState, useLayoutEffect} from 'react';
 import NextButton from '../components/NextButton';
 import ActivityIndicator from '../components/ActivityIndicator';
+import Head from '../components/Head';
 import styles from './SignUp.module.css';
 
 type State = 'idle' | 'sending' | 'success' | 'error';
@@ -14,6 +15,9 @@ const credentials = {
 const FILE_KEY = 'email.json';
 
 export default function SignUp() {
+  useLayoutEffect(() => {
+    document.body.dataset.theme = 'dark';
+  });
   const [email, setEmail] = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
   const [desc, setDesc] = useState('');
@@ -56,75 +60,82 @@ export default function SignUp() {
     window.sa_event?.('signup');
   };
   return (
-    <div className={styles.container}>
-      <aside className={styles.aside}>
-        <h2 className={styles.title}>Request early access</h2>
-        <p className={styles.subtitle}>
-          We are starting to onboard providers and developers on the network.
-          Drop your email and we'll reach out to get you setup.
-        </p>
-      </aside>
-      {state === 'sending' ? (
-        <div className={styles.activityIndicator}>
-          <ActivityIndicator />
-        </div>
-      ) : state === 'success' ? (
-        <div className={styles.activityIndicator}>
-          <p className={styles.successIndicator}>
-            <span role="img" aria-label="Thumbs up">
-              👍
-            </span>{' '}
-            - Thanks we'll be in touch soon!
+    <>
+      <Head
+        title="Myel | Sign up"
+        description="Sign up to get early access when the network launches."
+        currentURL="https://wwww.myel.network/sign-up"
+      />
+      <div className={styles.container}>
+        <aside className={styles.aside}>
+          <h2 className={styles.title}>Request early access</h2>
+          <p className={styles.subtitle}>
+            We are starting to onboard providers and developers on the network.
+            Drop your email and we'll reach out to get you setup.
           </p>
-        </div>
-      ) : state === 'error' ? (
-        <div className={styles.activityIndicator}>
-          <p className={styles.errorIndicator}>
-            Something went wrong. Please try again.
-          </p>
-        </div>
-      ) : (
-        <form className={styles.form} data-netlify="true" name="signup-form">
-          <div className={styles.inputElement}>
-            <input
-              name="email"
-              value={email}
-              onChange={emailChange}
-              className={styles.input}
-              onFocus={() => setEmailFocused(true)}
-              onBlur={() => setEmailFocused(false)}
-            />
-            <span
-              className={
-                styles.formLabel +
-                (emailFocused || !!email ? ' ' + styles.labelMinimized : '')
-              }
-              aria-hidden="true">
-              Email
-            </span>
+        </aside>
+        {state === 'sending' ? (
+          <div className={styles.activityIndicator}>
+            <ActivityIndicator />
           </div>
-          <div className={styles.inputElement}>
-            <textarea
-              name="description"
-              value={desc}
-              onChange={descChange}
-              className={styles.input + ' ' + styles.longInput}
-              onFocus={() => setDescFocused(true)}
-              onBlur={() => setDescFocused(false)}
-            />
-            <span
-              className={
-                styles.formLabel +
-                (descFocused || !!desc ? ' ' + styles.labelMinimized : '')
-              }>
-              What do you want to use Myel for?
-            </span>
+        ) : state === 'success' ? (
+          <div className={styles.activityIndicator}>
+            <p className={styles.successIndicator}>
+              <span role="img" aria-label="Thumbs up">
+                👍
+              </span>{' '}
+              - Thanks we'll be in touch soon!
+            </p>
           </div>
-          <div className={styles.actions}>
-            <NextButton onClick={submit} disabled={!isValid} />
+        ) : state === 'error' ? (
+          <div className={styles.activityIndicator}>
+            <p className={styles.errorIndicator}>
+              Something went wrong. Please try again.
+            </p>
           </div>
-        </form>
-      )}
-    </div>
+        ) : (
+          <form className={styles.form} data-netlify="true" name="signup-form">
+            <div className={styles.inputElement}>
+              <input
+                name="email"
+                value={email}
+                onChange={emailChange}
+                className={styles.input}
+                onFocus={() => setEmailFocused(true)}
+                onBlur={() => setEmailFocused(false)}
+              />
+              <span
+                className={
+                  styles.formLabel +
+                  (emailFocused || !!email ? ' ' + styles.labelMinimized : '')
+                }
+                aria-hidden="true">
+                Email
+              </span>
+            </div>
+            <div className={styles.inputElement}>
+              <textarea
+                name="description"
+                value={desc}
+                onChange={descChange}
+                className={styles.input + ' ' + styles.longInput}
+                onFocus={() => setDescFocused(true)}
+                onBlur={() => setDescFocused(false)}
+              />
+              <span
+                className={
+                  styles.formLabel +
+                  (descFocused || !!desc ? ' ' + styles.labelMinimized : '')
+                }>
+                What do you want to use Myel for?
+              </span>
+            </div>
+            <div className={styles.actions}>
+              <NextButton onClick={submit} disabled={!isValid} />
+            </div>
+          </form>
+        )}
+      </div>
+    </>
   );
 }

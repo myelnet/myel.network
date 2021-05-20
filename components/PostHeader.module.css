@@ -1,0 +1,44 @@
+.textColumn {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  margin-bottom: 1rem;
+}
+
+.container h1 {
+  margin-bottom: 3rem;
+}
+
+.container .avatarWide {
+  display: none;
+}
+
+.container .avatar {
+  margin-bottom: 1.5rem;
+}
+
+.cover {
+  margin-bottom: 2rem;
+  height: 0;
+  position: relative;
+  padding-bottom: 50%;
+  overflow: hidden;
+}
+
+.date {
+  color: #86868b;
+}
+
+@media (min-width: 768px) {
+   .container .avatarWide {
+    display: block;
+    margin-bottom: 3rem;
+  }
+
+  .container .avatar {
+    display: none;
+  }
+}

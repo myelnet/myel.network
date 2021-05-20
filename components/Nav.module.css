@@ -47,20 +47,24 @@
 }
 
 .navBtn {
-  margin-left: 24px;
+  margin-left: 32px;
 }
 
 .navBtn a {
-  border: solid 1px #FFF;
-  color: #FFF;
+  border: solid 1px var(--color-text);
+  color: var(--color-text);
   border-radius: 10px;
   padding: 8px 16px 8px 16px;
+}
+
+.navLink {
+  color: var(--color-text);
 }
 
 .navTitle a {
   font-weight: bold;
   font-size: 1.2rem;
-  color: white;
+  color: var(--color-text);
 }
 
 .navBar a {
@@ -86,7 +90,7 @@
 }
 
 .navScrolled {
-  background-color: rgba(29,29,31,0.72);
+  background-color: var(--color-nav);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
@@ -94,6 +98,10 @@
 .navChevron {
   display: none;
   transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1)
+}
+
+.navChevron svg {
+  fill: var(--color-text);
 }
 
 @media only screen and (max-width: 767px) {
@@ -158,4 +166,8 @@
   }
 
 
+  .navLink {
+    margin-bottom: 24px;
+    margin-left: 32px;
+  }
 }

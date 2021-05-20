@@ -1,0 +1,30 @@
+.container {
+  margin: auto;
+  max-width: 1024px;
+  padding: 4rem 22px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header h4 {
+  font-weight: 400;
+}
+
+.headerSmall h2:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.headerSmall {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .container h1 {
+    font-size: 6.25rem;
+  }
+}
