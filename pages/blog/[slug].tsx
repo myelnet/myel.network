@@ -7,6 +7,7 @@ import PostHeader from '../../components/PostHeader';
 import PostBody from '../../components/PostBody';
 import {getPostBySlug, getAllPosts} from '../../lib/getPosts';
 import markdownToHtml from '../../lib/markdownToHtml';
+import Head from '../../components/Head';
 
 type Props = {
   post: Post;
@@ -18,6 +19,12 @@ export default function BlogPost({post}: Props) {
   });
   return (
     <Layout>
+      <Head
+        title={post.title}
+        description={post.excerpt}
+        currentURL={`https://www.myel.network/blog/${post.slug}`}
+        previewImage={post.coverImage}
+      />
       <article>
         <PostHeader
           title={post.title}
@@ -43,6 +50,7 @@ export async function getStaticProps({params}: Params) {
     'date',
     'slug',
     'author',
+    'excerpt',
     'content',
     'coverImage',
   ]);
