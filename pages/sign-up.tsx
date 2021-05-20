@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useState, useLayoutEffect} from 'react';
 import NextButton from '../components/NextButton';
 import ActivityIndicator from '../components/ActivityIndicator';
 import styles from './SignUp.module.css';
@@ -14,6 +14,9 @@ const credentials = {
 const FILE_KEY = 'email.json';
 
 export default function SignUp() {
+  useLayoutEffect(() => {
+    document.body.dataset.theme = 'dark';
+  });
   const [email, setEmail] = useState('');
   const [emailFocused, setEmailFocused] = useState(false);
   const [desc, setDesc] = useState('');

@@ -15,7 +15,9 @@ export default function Footer() {
                 <Link href="/sign-up">Request access</Link>
               </li>
               <li>
-                <a href="https://myel.dev/#/blog">Blog</a>
+                <Link href="/blog">
+                  <a>Blog</a>
+                </Link>
               </li>
             </ul>
           </div>

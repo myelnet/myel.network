@@ -72,6 +72,11 @@ export default function Nav() {
                 ? styles.navItems + ' ' + styles.navItemsOpen
                 : styles.navItems
             }>
+            <li className={styles.navLink}>
+              <NavLink href="/blog" activeClassName={styles.navMenuActive}>
+                <a onClick={() => setOpen(false)}>Blog</a>
+              </NavLink>
+            </li>
             <li className={styles.navBtn}>
               <NavLink href="/sign-up" activeClassName={styles.navMenuActive}>
                 <a onClick={() => setOpen(false)}>Request early access</a>

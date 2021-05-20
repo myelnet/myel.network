@@ -1,5 +1,5 @@
 import * as React from 'react';
-import NImage from 'next/image';
+import {useLayoutEffect} from 'react';
 
 import styles from './Home.module.css';
 
@@ -8,8 +8,11 @@ import MacWindowIcon from '../components/MacWidowIcon';
 import ShippingBoxIcon from '../components/ShippingBoxIcon';
 
 export default function Home() {
+  useLayoutEffect(() => {
+    document.body.dataset.theme = 'dark';
+  });
   return (
-    <>
+    <div className={styles.container}>
       <main className={styles.overviewContainer}>
         <section className={`${styles.section} ${styles.sectionHero}`}>
           <div className={styles.sectionContent}>
@@ -95,6 +98,6 @@ export default function Home() {
           </article>
         </section>
       </main>
-    </>
+    </div>
   );
 }
