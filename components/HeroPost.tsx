@@ -30,7 +30,12 @@ export default function HeroPost({
         <Link href={path}>
           <a>
             <div className={styles.image}>
-              <Image src={coverImage} alt={title} layout="fill" />
+              <Image
+                src={coverImage}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
           </a>
         </Link>

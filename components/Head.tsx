@@ -7,6 +7,8 @@ type Props = {
   siteName?: string;
   currentURL: string;
   previewImage?: string;
+  type?: string;
+  publishedTime?: string;
 };
 
 export default function Head({
@@ -15,12 +17,14 @@ export default function Head({
   siteName,
   currentURL,
   previewImage,
+  type,
+  publishedTime,
 }: Props) {
   return (
     <NextHead>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type ?? 'website'} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={siteName ?? 'Myel'} />
       <meta property="og:url" content={currentURL} />
@@ -29,6 +33,9 @@ export default function Head({
         content={previewImage ?? '/myel_icon_412x412.ong'}
       />
       <meta property="og:description" content={description} />
+      {!!publishedTime && (
+        <meta property="og:article:published_time" content={publishedTime} />
+      )}
     </NextHead>
   );
 }

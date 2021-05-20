@@ -21,7 +21,7 @@ export default function PostHeader({title, coverImage, date, author}: Props) {
         <Avatar {...author} />
       </div>
       <div className={styles.cover}>
-        <Image src={coverImage} alt={title} layout="fill" />
+        <Image src={coverImage} alt={title} layout="fill" objectFit="cover" />
       </div>
       <div className={styles.avatar}>
         <Avatar {...author} />

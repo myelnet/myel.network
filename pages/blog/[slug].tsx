@@ -20,10 +20,12 @@ export default function BlogPost({post}: Props) {
   return (
     <Layout>
       <Head
+        type="article"
         title={post.title}
         description={post.excerpt}
         currentURL={`https://www.myel.network/blog/${post.slug}`}
         previewImage={post.coverImage}
+        publishedTime={post.date}
       />
       <article>
         <PostHeader
