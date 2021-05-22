@@ -8,6 +8,7 @@
   padding-top: max(8em, 20vmin);
   padding-left: 40px;
   padding-right: 40px;
+  min-height: 100vh;
 }
 
 .aside {
