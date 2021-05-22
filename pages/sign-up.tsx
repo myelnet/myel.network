@@ -63,7 +63,7 @@ export default function SignUp() {
     <>
       <Head
         title="Myel | Sign up"
-        description="Sign up to get early access when the network launches."
+        description="Myel is a CDN product for decentralized applications. Sign up to get early access when the network launches."
         currentURL="https://wwww.myel.network/sign-up"
       />
       <div className={styles.container}>

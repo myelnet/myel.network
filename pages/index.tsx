@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <Head
-        title="Myel"
-        description="Myel is a community powered content delivery network."
+        title="Myel - Community Powered Content Delivery Network"
+        description="Myel is the missing piece for content delivery in the Web 3.0 stack. Myel provides fast, resilient and trustless data transfers for Web 3.0 applications."
         currentURL="https://www.myel.network"
       />
       <div className={styles.container}>
@@ -69,9 +69,7 @@ export default function Home() {
                     publish and retrieve content from a network of cache
                     providers.
                   </p>
-                  <a href="https://myel.dev/#/blog/tech-update-1">
-                    Learn more about POP
-                  </a>
+                  <a href="/blog/tech-update-1">Learn more about POP</a>
                 </section>
                 <section className={styles.articleItem}>
                   <div className={styles.titleRow}>
@@ -84,9 +82,7 @@ export default function Home() {
                     content to whomever requests it and gets paid for every
                     request.
                   </p>
-                  <a href="https://myel.dev/#/blog/intro">
-                    Learn more about Myel for MacOS
-                  </a>
+                  <a href="/blog/intro">Learn more about Myel for MacOS</a>
                 </section>
                 <section className={styles.articleItem}>
                   <div className={styles.titleRow}>
@@ -98,9 +94,7 @@ export default function Home() {
                     improve reliability and speed when distributing memory
                     intensive content.
                   </p>
-                  <a href="https://myel.dev/#/blog/intro">
-                    Learn more about myel.js
-                  </a>
+                  <a href="/blog/intro">Learn more about myel.js</a>
                 </section>
               </div>
             </article>
