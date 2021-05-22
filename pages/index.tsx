@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Head
         title="Myel - Community Powered Content Delivery Network"
-        description="Myel is the missing piece for content delivery in the Web 3.0 stack. Myel provides fast, resilient and trustless data transfers for Web 3.0 applications."
+        description="Myel is the missing piece for content delivery in the Web 3.0 stack. Myel provides fast, resilient and trustless data transfers for Web 3.0 applications using IPFS and Filecoin protocols."
         currentURL="https://www.myel.network"
       />
       <div className={styles.container}>
