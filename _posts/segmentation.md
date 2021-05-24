@@ -1,6 +1,6 @@
 ---
 title: 'Region-based Network Segmentation for Decentralized Content Discovery'
-coverImage: '/assets/blog/Network-diagram.png'
+coverImage: '/assets/blog/seg_header.jpg'
 excerpt: 'In which we segment the Myel network by subscribing caches and clients with similar latencies (i.e that are close geographically) to the same Gossipsub topics.'
 date: '2021-05-24T21:01:07.322Z'
 author:
