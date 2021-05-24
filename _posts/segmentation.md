@@ -70,9 +70,7 @@ We assume peers have different network conditions and uniformly generate paramet
 
 We set our regions to contain around 10 peers per region. Peers within a given region are initialised to have similar latency.  We compare our network segmentation approach to a naive approach with no network segmentation such that the entire network constitutes a single Gossipsub topic. We also compare to an approach (content segmentation) which segments the network by topics unrelated to geographic location. In this case, peers who subscribe to a topic may be in different geographies and thus have different randomized latency. 
 
-Discovery Time             |  Percent Difference
-:-------------------------:|:-------------------------:
-!![](/assets/blog/discovery_res.png)  |  ![](/assets/blog/discovery_res_percent.png)
+![](/assets/blog/discovery_res.png)  |  ![](/assets/blog/discovery_res_percent.png)
 
 
  
