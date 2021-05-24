@@ -85,10 +85,10 @@ Thanks for reading!
 
 ##### REFERENCES
 
-[1]  S.  G.  Dykes,  “Cooperative  web  caching  using  server-directed  proxysharing,” 1998.
-[2]  G.  Almashaqbeh,  “CacheCash:  A  Cryptocurrency-based  DecentralizedContent Delivery Network,” 2019.
-[3]  T. X. Vu, S. Chatzinotas, and B. E. Ottersten, “Blockchain-based contentdelivery networks: Content transparency meets user privacy,” CoRR, 2019.
-[4]  J. Benet, “IPFS - content addressed, versioned, P2P file system,” CoRR, 2014.
-[5]  G. Tribhuvan, “A Brief Introduction and Analysis of the Gnutella Protocol,”Group.
-[6]  P. Maymounkov and D. Mazieres, “Kademlia: A Peer-to-Peer InformationSystem Based on the XOR Metric,” inPeer-to-Peer Systems, 2002
+- **[1]**  S.  G.  Dykes,  “Cooperative  web  caching  using  server-directed  proxysharing,” 1998.
+- **[2]**  G.  Almashaqbeh,  “CacheCash:  A  Cryptocurrency-based  DecentralizedContent Delivery Network,” 2019.
+- **[3]** T. X. Vu, S. Chatzinotas, and B. E. Ottersten, “Blockchain-based contentdelivery networks: Content transparency meets user privacy,” CoRR, 2019.
+- **[4]**  J. Benet, “IPFS - content addressed, versioned, P2P file system,” CoRR, 2014.
+- **[5]**  G. Tribhuvan, “A Brief Introduction and Analysis of the Gnutella Protocol,”Group.
+- **[6]**  P. Maymounkov and D. Mazieres, “Kademlia: A Peer-to-Peer InformationSystem Based on the XOR Metric,” inPeer-to-Peer Systems, 2002
    
