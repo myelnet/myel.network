@@ -70,12 +70,17 @@ We assume peers have different network conditions and uniformly generate paramet
 
 We set our regions to contain around 10 peers per region. Peers within a given region are initialised to have similar latency.  We compare our network segmentation approach to a naive approach with no network segmentation such that the entire network constitutes a single Gossipsub topic. We also compare to an approach (content segmentation) which segments the network by topics unrelated to geographic location. In this case, peers who subscribe to a topic may be in different geographies and thus have different randomized latency. 
 
-<img src="/assets/blog/discovery_res_percent.png" alt="discovery_res_percent" style="zoom:50%;" /><img src="/assets/blog/discovery_res.png" alt="discovery_res" style="zoom:50%;" />
-
-> Figure 1: Here we test the scalability of the three content discovery methods on our test networks for a number of peers $ \in [10,20,30,40]$. **[left]** We measure the time for a client to discover the content in each of these setups (milliseconds). **[right]** We measure the percent difference in content discovery time w.r.t the setup with 10 peers. For both plots shading represents the standard deviation over 24 runs. Clearly the approach that segments the network by region is most performant and scales better as more peers join.
+![](/assets/blog/discovery_res.png)
+![](/assets/blog/discovery_res_percent.png) 
+>Figure 1: Here we test the scalability of the three content discovery methods on our test networks for a number of peers $ \in [10,20,30,40]$. **[left]** We measure the time for a client to discover the content in each of these setups (milliseconds). **[right]** We measure the percent difference in content discovery time w.r.t the setup with 10 peers. For both plots shading represents the standard deviation over 24 runs. Clearly the approach that segments the network by region is most performant and scales better as more peers join.
 
 
 
 ##### Discussion and Conclusion
 
 The results of these experiments can be seen in Figure 1 . Clearly the Region based segmentation outperforms other methods of discovery and scales better as more peers are added. Given these results our aim now will be to further test this system with a greater number of peers.
+
+In the meantime you can [sign up](https://www.myel.network/#/sign-up) to try it out or if you have any feedback you can open an issue directly on the [repo](https://github.com/myelnet/go-hop-exchange).
+
+Thanks for reading!
+   
