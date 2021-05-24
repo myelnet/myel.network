@@ -70,11 +70,8 @@ We assume peers have different network conditions and uniformly generate paramet
 
 We set our regions to contain around 10 peers per region. Peers within a given region are initialised to have similar latency.  We compare our network segmentation approach to a naive approach with no network segmentation such that the entire network constitutes a single Gossipsub topic. We also compare to an approach (content segmentation) which segments the network by topics unrelated to geographic location. In this case, peers who subscribe to a topic may be in different geographies and thus have different randomized latency. 
 
-![](/assets/blog/discovery_res.png)  |  ![](/assets/blog/discovery_res_percent.png)
-
-
- 
->Figure 1: Here we test the scalability of the three content discovery methods on our test networks for a number of peers $ \in [10,20,30,40]$. **[left]** We measure the time for a client to discover the content in each of these setups (milliseconds). **[right]** We measure the percent difference in content discovery time w.r.t the setup with 10 peers. For both plots shading represents the standard deviation over 24 runs. Clearly the approach that segments the network by region is most performant and scales better as more peers join.
+![](/assets/blog/discovery_res_combined.png) 
+*Figure 1: Here we test the scalability of the three content discovery methods on our test networks for a number of peers $ \in [10,20,30,40]$. **[left]** We measure the time for a client to discover the content in each of these setups (milliseconds). **[right]** We measure the percent difference in content discovery time w.r.t the setup with 10 peers. For both plots shading represents the standard deviation over 24 runs. Clearly the approach that segments the network by region is most performant and scales better as more peers join.*
 
 
 
@@ -85,4 +82,13 @@ The results of these experiments can be seen in Figure 1 . Clearly the Region ba
 In the meantime you can [sign up](https://www.myel.network/#/sign-up) to try it out or if you have any feedback you can open an issue directly on the [repo](https://github.com/myelnet/go-hop-exchange).
 
 Thanks for reading!
+
+##### REFERENCES
+
+[1]  S.  G.  Dykes,  “Cooperative  web  caching  using  server-directed  proxysharing,” 1998.
+[2]  G.  Almashaqbeh,  “CacheCash:  A  Cryptocurrency-based  DecentralizedContent Delivery Network,” 2019.
+[3]  T. X. Vu, S. Chatzinotas, and B. E. Ottersten, “Blockchain-based contentdelivery networks: Content transparency meets user privacy,” CoRR, 2019.
+[4]  J. Benet, “IPFS - content addressed, versioned, P2P file system,” CoRR, 2014.
+[5]  G. Tribhuvan, “A Brief Introduction and Analysis of the Gnutella Protocol,”Group.
+[6]  P. Maymounkov and D. Mazieres, “Kademlia: A Peer-to-Peer InformationSystem Based on the XOR Metric,” inPeer-to-Peer Systems, 2002
    
