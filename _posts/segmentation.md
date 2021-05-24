@@ -79,7 +79,7 @@ We set our regions to contain around 10 peers per region. Peers within a given r
 
 The results of these experiments can be seen in Figure 1 . Clearly the Region based segmentation outperforms other methods of discovery and scales better as more peers are added. Given these results our aim now will be to further test this system with a greater number of peers.
 
-In the meantime you can [sign up](https://www.myel.network/#/sign-up) to try it out or if you have any feedback you can open an issue directly on the [repo](https://github.com/myelnet/go-hop-exchange).
+In the meantime you can [sign up](/sign-up) to try it out or if you have any feedback you can open an issue directly on the [repo](https://github.com/myelnet/pop).
 
 Thanks for reading!
 
