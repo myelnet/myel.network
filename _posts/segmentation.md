@@ -40,7 +40,7 @@ Regions segment the network via Gossipsub topics defined around peer declared ge
 #### Experiments
 
 In our setup we assume the content has already been dispatched to the network of caches, and that the client sending the query for content can find the address of at least one other live node and use it to bootstrap a routing table.
-Our implementation uses libp2p's Kademelia Distributed Hash Table (DHT) **[6]** routing and Gossipsub routing algorithm (For a detailed overview of our implementation we refer the reader to [this repo]( https://github.com/myelnet/pop/tree/dev/testplans/discovery) ). 
+Our implementation uses libp2p's Kademelia Distributed Hash Table (DHT) **[6]** routing for peer discovery and Gossipsub algorithm (For a detailed overview of our implementation we refer the reader to [this repo](https://github.com/myelnet/pop/blob/9ec6edd7abd13004a64d73d44bc877b926c5ef0d/testplans/routing.md)) for content routing. 
 
 Our messages are CBOR encoded to stay compact and to be compatible with Filecoin and IPLD.To test the discovery system, we ran experiments on an **Ubuntu AMD Ryzen 9 3900XT 12-Core Processor - 64GiB DDR4** using [Testground](https://github.com/testground/testground), which simulated a network of up to 40 peers. We run a range of experiments with different setups in which we measure the *Time to Discovery*. This is the combined time it takes for a client's query to reach a cache provider with the desired content, and for the provider's response to be returned to the client. 
 
