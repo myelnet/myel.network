@@ -70,8 +70,12 @@ We assume peers have different network conditions and uniformly generate paramet
 
 We set our regions to contain around 10 peers per region. Peers within a given region are initialised to have similar latency.  We compare our network segmentation approach to a naive approach with no network segmentation such that the entire network constitutes a single Gossipsub topic. We also compare to an approach (content segmentation) which segments the network by topics unrelated to geographic location. In this case, peers who subscribe to a topic may be in different geographies and thus have different randomized latency. 
 
-![](/assets/blog/discovery_res.png)
-![](/assets/blog/discovery_res_percent.png) 
+Discovery Time             |  Percent Difference
+:-------------------------:|:-------------------------:
+!![](/assets/blog/discovery_res.png)  |  ![](/assets/blog/discovery_res_percent.png)
+
+
+ 
 >Figure 1: Here we test the scalability of the three content discovery methods on our test networks for a number of peers $ \in [10,20,30,40]$. **[left]** We measure the time for a client to discover the content in each of these setups (milliseconds). **[right]** We measure the percent difference in content discovery time w.r.t the setup with 10 peers. For both plots shading represents the standard deviation over 24 runs. Clearly the approach that segments the network by region is most performant and scales better as more peers join.
 
 
