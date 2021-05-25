@@ -29,7 +29,12 @@ export default function PostPreview({
       <div className={styles.cover}>
         <Link href={path}>
           <a>
-            <Image src={coverImage} alt={title} layout="fill" />
+            <Image
+              src={coverImage}
+              alt={title}
+              layout="fill"
+              objectFit="cover"
+            />
           </a>
         </Link>
       </div>
