@@ -154,7 +154,7 @@ body[data-theme="dark"] {
   --color-text: white;
   --color-text-secondary: rgba(255, 255, 255, 0.7);
   --color-nav: rgba(29,29,31,0.72);
-  --color-footer: black;
+  --color-footer: rgba(0, 0, 0, 0.1);
   --color-border: rgba(255, 255, 255, 0.4);
   --color-accent: #FC425A;
 }

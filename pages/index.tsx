@@ -119,7 +119,7 @@ export default function Home() {
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle2}>
-              The potential of a decentralized CDN
+              The power of a decentralized CDN
             </h2>
             <p className={styles.sectionSubtitle2}>
               Your users 'host' your app for you, and as more users use your
@@ -132,7 +132,47 @@ export default function Home() {
               .
             </p>
             <div className={styles.frameContainer}>
-              <div className={styles.frameContent}></div>
+              <div className={styles.frameContent}>
+                <div className={styles.frametop}>
+                  <div className={styles.tagspace}>
+                    <span className={styles.taglight}>we're striving for</span>
+                  </div>
+                </div>
+                <ul className={styles.framelist}>
+                  <li>
+                    <span className={styles.listicon}>💪</span>
+                    <div className={styles.itemmain}>
+                      <h3>Resilience</h3>
+                      <p>No single point of failure</p>
+                    </div>
+                    <button className={styles.btn}>read more</button>
+                  </li>
+                  <li>
+                    <span className={styles.listicon}>🌍</span>
+                    <div className={styles.itemmain}>
+                      <h3>Scale</h3>
+                      <p>$0 to add a node</p>
+                    </div>
+                    <button className={styles.btn}>read more</button>
+                  </li>
+                  <li>
+                    <span className={styles.listicon}>🏎</span>
+                    <div className={styles.itemmain}>
+                      <h3>Performance</h3>
+                      <p>Pure peer-to-peer client ↔ network connection</p>
+                    </div>
+                    <button className={styles.btn}>read more</button>
+                  </li>
+                  <li>
+                    <span className={styles.listicon}>🤝</span>
+                    <div className={styles.itemmain}>
+                      <h3>Ease of use</h3>
+                      <p>Thousands of nodes deployed with a single click</p>
+                    </div>
+                    <button className={styles.btn}>read more</button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </section>
         </main>

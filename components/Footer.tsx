@@ -9,7 +9,7 @@ export default function Footer() {
         <div className={styles.topSection}>
           <div>
             <h6>Myel</h6>
-            <p>Community powered content delivery network</p>
+            <p>Content delivery network for the web3.0</p>
             <ul>
               <li>
                 <Link href="/sign-up">Request access</Link>
@@ -25,10 +25,11 @@ export default function Footer() {
             <h6>Product</h6>
             <ul>
               <li>
-                <a href="https://github.com/myelnet/pop">PoP</a>
+                <a href="https://github.com/myelnet/pop">pop</a>
               </li>
-              <li>Myel for MacOS (coming soon)</li>
-              <li>myel.js (coming soon)</li>
+              <li>
+                <a href="https://github.com/myel/myel.js">myel.js</a>
+              </li>
             </ul>
           </div>
           <div>
