@@ -3,6 +3,7 @@ import {Children} from 'react';
 import {useEffect, useRef, useState} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import styles from './Nav.module.css';
 import ChevronDownIcon from './ChevronDownIcon';
 
@@ -62,7 +63,12 @@ export default function Nav() {
       <div className={styles.navContent}>
         <div className={styles.navTitle}>
           <Link href="/">
-            <a>Myel</a>
+            <NextImage
+              src="/LogoWhite.svg"
+              alt="Myel Logo"
+              width={51}
+              height={34}
+            />
           </Link>
         </div>
         <div className={styles.navMenu}>
@@ -74,12 +80,12 @@ export default function Nav() {
             }>
             <li className={styles.navLink}>
               <NavLink href="/blog" activeClassName={styles.navMenuActive}>
-                <a onClick={() => setOpen(false)}>Blog</a>
+                <a onClick={() => setOpen(false)}>blog</a>
               </NavLink>
             </li>
             <li className={styles.navBtn}>
               <NavLink href="/sign-up" activeClassName={styles.navMenuActive}>
-                <a onClick={() => setOpen(false)}>Request early access</a>
+                <a onClick={() => setOpen(false)}>get early access</a>
               </NavLink>
             </li>
           </ul>

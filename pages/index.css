@@ -108,7 +108,7 @@ button:disabled {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -150,19 +150,53 @@ h5 {
 
 body,
 body[data-theme="dark"] {
-  --color-bg: #030B1C;
+  --color-bg: black;
   --color-text: white;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
   --color-nav: rgba(29,29,31,0.72);
   --color-footer: black;
   --color-border: rgba(255, 255, 255, 0.4);
+  --color-accent: #FC425A;
 }
 
 body[data-theme="light"] {
   --color-bg: white;
   --color-text: black;
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
   --color-nav: rgba(255,255,255,0.72);
   --color-footer: #fafafa;
   --color-border: rgba(0, 0, 0, 0.1);
+  --color-accent: #FC425A;
+}
+
+label {
+  cursor: inherit;
+}
+
+/* =============== Fonts ==================== */
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 700;
+  src: url("/fonts/SF-Pro-Rounded-Bold.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 600;
+  src: url("/fonts/SF-Pro-Rounder-Semibold.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 500;
+  src: url("/fonts/SF-Pro-Rounded-Medium.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 400;
+  src: url("/fonts/SF-Pro-Rounded-Regular.otf");
 }
 
 

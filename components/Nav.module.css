@@ -51,14 +51,15 @@
 }
 
 .navBtn a {
-  border: solid 1px var(--color-text);
+  border: solid 1.5px var(--color-text);
   color: var(--color-text);
-  border-radius: 10px;
-  padding: 8px 16px 8px 16px;
+  border-radius: 100px;
+  padding: 10px 16px 10px 16px;
 }
 
 .navLink {
   color: var(--color-text);
+  font-weight: 600;
 }
 
 .navTitle a {

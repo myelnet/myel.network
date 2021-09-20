@@ -1,13 +1,36 @@
 import * as React from 'react';
-import {useLayoutEffect} from 'react';
+import {useLayoutEffect, useState} from 'react';
 import styles from './Home.module.css';
+import NextImage from 'next/image';
 
 import Image from '../components/Image';
 import MacWindowIcon from '../components/MacWidowIcon';
 import ShippingBoxIcon from '../components/ShippingBoxIcon';
 import Head from '../components/Head';
+import SegmentedControl from '../components/SegmentedControl';
+import logoColor from '../public/LogoColor.svg';
+import logoBlack from '../public/LogoBlack.svg';
+
+type Peer = {
+  id: string;
+  region: string;
+  latency: number;
+};
 
 export default function Home() {
+  const [mode, setMode] = useState('upload');
+  const [peers, setPeers] = useState<Peer[]>([
+    {
+      id: '12D3KooWMETXkWySAajFMqjiq8Q9xwMR8ceBrEAQFh6k8KHLAPNy',
+      region: 'ohio',
+      latency: 0.738,
+    },
+    {
+      id: '12D3KooWStJfAywQmfaVFQDQYr9riDnEFG3VJ3qDGcTidvc4nQtc',
+      region: 'paris',
+      latency: 0.891,
+    },
+  ]);
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
   });
@@ -22,82 +45,95 @@ export default function Home() {
         <main className={styles.overviewContainer}>
           <section className={`${styles.section} ${styles.sectionHero}`}>
             <div className={styles.sectionContent}>
-              <h1 className={styles.sectionTitle}>
-                <div className={styles.logo}>
-                  <Image
-                    alt="Myel icon"
-                    src="/MyelIcon.png"
-                    ratio="high"
-                    plh="/MyelIcon_lowres.png"
-                  />
-                </div>{' '}
-                Myel
-              </h1>
-              <p className={styles.sectionSubtitle}>
-                Community Powered Content Delivery Network.
-              </p>
+              <div className={styles.sectionText}>
+                <h1 className={styles.sectionTitle}>myel</h1>
+                <p className={styles.sectionSubtitle}>
+                  The <strong>community</strong> powered content delivery
+                  network for <strong>web3</strong> developers
+                </p>
+                <button className={styles.btn}>try it out</button>
+              </div>
+              <div className={styles.liveLogo}>
+                <NextImage src={logoColor} alt="Myel logo" />
+              </div>
             </div>
           </section>
-          <section className={`${styles.section} ${styles.section2}`}>
-            <div className={styles.background}>
-              <Image
-                alt="background"
-                src="/gradient-bg.jpg"
-                ratio="sans"
-                plh="/gradient-bg_lowres.png"
-                className={styles.backgroundImage}
-              />
-            </div>
-            <article className={styles.article}>
-              <header className={styles.articleHeader}>
-                <h2>
-                  We help developers deploy and scale new experiences to the
-                  entire world without relying on expensive server side
-                  infrastructure.
-                </h2>
-              </header>
-              <div className={styles.articleBody}>
-                <section className={styles.articleItem}>
-                  <div className={styles.titleRow}>
-                    <span>🍿</span>
-                    <h3>POP</h3>
+          <section className={styles.section}>
+            <span className={styles.tag}>what is it?</span>
+            <h2 className={styles.headline}>
+              Myel is a <strong>content delivery</strong> network that is{' '}
+              <strong>resilient</strong>, <strong>scalable</strong>, and{' '}
+              <strong>peer-to-peer</strong> to suit the long-term needs of{' '}
+              <strong>web3</strong> applications.
+            </h2>
+          </section>
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle2}>Try it out!</h2>
+            <p className={styles.sectionSubtitle2}>
+              You can upload a file to <strong>Myel CDN</strong>, or retrieve an
+              existing file stored on our <strong>decentalized network</strong>.
+            </p>
+            <div className={styles.frameContainer}>
+              <div className={styles.frameContent}>
+                <div className={styles.frametop}>
+                  <div className={styles.frametopHead}>
+                    <div className={styles.frametopCorner}>
+                      <NextImage src={logoBlack} alt="Myel logo" />
+                    </div>
+                    <div className={styles.frametopCenter}>
+                      <SegmentedControl
+                        value={mode}
+                        onChange={setMode}
+                        options={['upload', 'retrieve']}
+                      />
+                    </div>
+                    <div className={styles.frametopCorner}></div>
                   </div>
-                  <p>
-                    Run a Myel point of presence and get paid to deliver content
-                    on Filecoin and IPFS. With distributions for MacOS and
-                    Linux, the Pop command line interface allows developers to
-                    publish and retrieve content from a network of cache
-                    providers.
-                  </p>
-                  <a href="/blog/tech-update-1">Learn more about POP</a>
-                </section>
-                <section className={styles.articleItem}>
-                  <div className={styles.titleRow}>
-                    <MacWindowIcon fill="#AB40FF" />
-                    <h3>Myel for MacOS</h3>
+                  <div className={styles.frametopTitle}>
+                    <p>connected to {peers.length} peers</p>
                   </div>
-                  <p>
-                    Manage your Myel point of presence with our simple MacOS
-                    application. The application runs a Pop node to serve
-                    content to whomever requests it and gets paid for every
-                    request.
+                </div>
+                <div className={styles.framescroll}>
+                  <ul className={styles.framescroller}>
+                    {peers.map((p) => (
+                      <li key={p.id} className={styles.peerRow}>
+                        <div className={styles.peerHeading}>
+                          <div>
+                            {p.id.slice(0, 8)}...{p.id.slice(-4)}
+                          </div>
+                          <div>{p.region}</div>
+                        </div>
+                        <div className={styles.peerData}>{p.latency}s</div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.framebottom}>
+                  <button className={styles.btn}>upload a file</button>
+                  <p className={styles.fineprint}>
+                    Uploaded files will be public
                   </p>
-                  <a href="/blog/intro">Learn more about Myel for MacOS</a>
-                </section>
-                <section className={styles.articleItem}>
-                  <div className={styles.titleRow}>
-                    <ShippingBoxIcon fill="#FB7008" />
-                    <h3>myel.js</h3>
-                  </div>
-                  <p>
-                    Interact with the Myel network in your applications to
-                    improve reliability and speed when distributing memory
-                    intensive content.
-                  </p>
-                  <a href="/blog/intro">Learn more about myel.js</a>
-                </section>
+                </div>
               </div>
-            </article>
+            </div>
+          </section>
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle2}>
+              The potential of a decentralized CDN
+            </h2>
+            <p className={styles.sectionSubtitle2}>
+              Your users 'host' your app for you, and as more users use your
+              app, your infrastructure <strong>scales automatically</strong>.
+              They're your backend servers,{' '}
+              <strong>
+                your content delivery points of presence, and your customers all
+                wrapped in one
+              </strong>
+              .
+            </p>
+            <div className={styles.frameContainer}>
+              <div className={styles.frameContent}></div>
+            </div>
           </section>
         </main>
       </div>
