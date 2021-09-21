@@ -157,6 +157,7 @@ body[data-theme="dark"] {
   --color-footer: rgba(0, 0, 0, 0.1);
   --color-border: rgba(255, 255, 255, 0.4);
   --color-accent: #FC425A;
+  --color-modal-bg: #FFF;
 }
 
 body[data-theme="light"] {
@@ -167,6 +168,7 @@ body[data-theme="light"] {
   --color-footer: #fafafa;
   --color-border: rgba(0, 0, 0, 0.1);
   --color-accent: #FC425A;
+  --color-modal-bg: #000;
 }
 
 label {

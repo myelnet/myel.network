@@ -3,6 +3,7 @@ import Head from 'next/head';
 import './index.css';
 import Footer from '../components/Footer';
 import Nav from '../components/Nav';
+import '@reach/dialog/styles.css';
 
 export default function App({Component, pageProps}: AppProps) {
   return (

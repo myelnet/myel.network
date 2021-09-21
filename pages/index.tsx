@@ -2,14 +2,18 @@ import * as React from 'react';
 import {useLayoutEffect, useState} from 'react';
 import styles from './Home.module.css';
 import NextImage from 'next/image';
+import {useDropzone} from 'react-dropzone';
 
 import Image from '../components/Image';
 import MacWindowIcon from '../components/MacWidowIcon';
 import ShippingBoxIcon from '../components/ShippingBoxIcon';
 import Head from '../components/Head';
 import SegmentedControl from '../components/SegmentedControl';
+import Modal from '../components/Modal';
 import logoColor from '../public/LogoColor.svg';
 import logoBlack from '../public/LogoBlack.svg';
+import logoBackground from '../public/LogoBackground.svg';
+import logoDropper from '../public/LogoDropper.svg';
 
 type Peer = {
   id: string;
@@ -34,6 +38,17 @@ export default function Home() {
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
   });
+  const [uploading, setUploading] = useState(false);
+  const [file, setFile] = useState<File>(null);
+  const onDrop = (files) => {
+    setFile(files[0]);
+  };
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
+  const reset = () => {
+    setFile(null);
+    setUploading(false);
+  };
+
   return (
     <>
       <Head
@@ -109,13 +124,46 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className={styles.framebottom}>
-                  <button className={styles.btn}>upload a file</button>
+                  <button
+                    className={styles.btn}
+                    onClick={() => setUploading(true)}>
+                    upload a file
+                  </button>
                   <p className={styles.fineprint}>
                     Uploaded files will be public
                   </p>
                 </div>
               </div>
             </div>
+            <Modal actionTitle="Upload" isOpen={uploading} onDismiss={reset}>
+              {file ? (
+                <div className={styles.successContainer}>
+                  <div className={styles.successContent}>
+                    <span className={styles.taglight}>✅ File uploaded</span>
+                    <h2>
+                      <strong>{file.name}</strong>
+                    </h2>
+                    <h2>{file.size}</h2>
+                    <div className={styles.fineprint}>
+                      Your file was recieved by Peer 0012942. It is now cached
+                      on the Myel network and can be retrieved from anywhere.
+                    </div>
+                  </div>
+                  <button className={styles.blackBtn} onClick={reset}>
+                    dismiss
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.dropContainer} {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <span className={styles.taglight}>Upload a file</span>
+                  <NextImage src={logoDropper} alt="Drag on the logo" />
+                  <p className={styles.fineprint}>
+                    Drag and drop to upload a file of any size or type
+                  </p>
+                </div>
+              )}
+            </Modal>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle2}>
@@ -173,6 +221,9 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
+            </div>
+            <div className={styles.backgroundLogo}>
+              <NextImage src={logoBackground} alt="Background logo" />
             </div>
           </section>
         </main>

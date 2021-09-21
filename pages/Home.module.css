@@ -178,6 +178,11 @@
   top: -200px;
 }
 
+.backgroundLogo {
+  position: absolute;
+  top: 240px;
+}
+
 .cardTitle {
   font-size: 2em;
   font-weight: 600;
@@ -312,6 +317,12 @@
   cursor: pointer;
   text-align: center;
   box-shadow: 0px 6px 20px 0px #FC425A99;
+}
+
+.blackBtn {
+  composes: btn;
+  background-color: #000;
+  box-shadow: none;
 }
 
 .frameContainer {
@@ -479,6 +490,37 @@
   max-width: 240px;
 }
 
+.dropContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.dropContainer > .fineprint {
+  max-width: 210px;
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successContent h2 {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
 
 @media (max-width: 767px) {
 
@@ -533,6 +575,10 @@
 
 .article {
   padding-top: 120px;
+}
+
+.backgroundLogo {
+  display: none;
 }
 }
 
