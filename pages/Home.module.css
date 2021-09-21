@@ -114,6 +114,24 @@
   border: solid 1px rgba(0, 0, 0, 0.2);
 }
 
+.tagplanned {
+  composes: tag;
+  color: #239BFA; 
+  border: solid 1px #239BFA;
+}
+
+.tagprogress {
+  composes: tag;
+  color: #C279FE; 
+  border: solid 1px #C279FE;
+}
+
+.tagcomplete {
+  composes: tag;
+  color: #71D142; 
+  border: solid 1px #71D142;
+}
+
 .tagspace {
   display: flex;
   justify-content: center;
@@ -346,32 +364,49 @@
   flex-direction: column;
 }
 
-.frameContainer:before {
-  content: "";
+/* .frameContainer:before { */
+/*   content: ""; */
+/*   position: absolute; */
+/*   display: block; */
+/*   top: -80px; */
+/*   left: -70px; */
+/*   width: 449px; */
+/*   height: 543px; */
+/*   background-color: #FC425A; */
+/*   opacity: 0.6; */
+/*   /1* filter: blur(200px); *1/ */
+/*   z-index: 1; */
+/*   pointer-events: none; */
+/* } */
+
+/* .frameContainer:after { */
+/*   content: ""; */
+/*   position: absolute; */
+/*   display: block; */
+/*   top: -80px; */
+/*   right: -70px; */
+/*   width: 449px; */
+/*   height: 543px; */
+/*   background-color: #0094FF; */
+/*   opacity: 0.6; */
+/*   /1* filter: blur(200px); *1/ */
+/*   z-index: 1; */
+/*   pointer-events: none; */
+/* } */
+
+.framebackground {
   position: absolute;
-  display: block;
-  top: -80px;
-  left: -70px;
-  width: 449px;
-  height: 543px;
-  background-color: #FC425A;
-  opacity: 0.6;
-  filter: blur(200px);
-  z-index: 1;
+  top: -150px;
 }
 
-.frameContainer:after {
-  content: "";
+.framebackground2 {
   position: absolute;
-  display: block;
-  top: -80px;
-  right: -70px;
-  width: 449px;
-  height: 543px;
-  background-color: #0094FF;
-  opacity: 0.6;
-  filter: blur(200px);
-  z-index: 1;
+  top: -100px;
+}
+
+.framebackground3 {
+  position: absolute;
+  top: -100px;
 }
 
 .frametop {

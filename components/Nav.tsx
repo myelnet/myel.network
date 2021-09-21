@@ -85,7 +85,7 @@ export default function Nav() {
             </li>
             <li className={styles.navBtn}>
               <NavLink href="/sign-up" activeClassName={styles.navMenuActive}>
-                <a onClick={() => setOpen(false)}>get early access</a>
+                <a onClick={() => setOpen(false)}>run a node</a>
               </NavLink>
             </li>
           </ul>
