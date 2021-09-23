@@ -3,7 +3,6 @@ import {useLayoutEffect, useState} from 'react';
 import styles from './Home.module.css';
 import NextImage from 'next/image';
 import {useDropzone} from 'react-dropzone';
-import useSWR from 'swr';
 
 import Image from '../components/Image';
 import MacWindowIcon from '../components/MacWidowIcon';
@@ -11,6 +10,7 @@ import ShippingBoxIcon from '../components/ShippingBoxIcon';
 import Head from '../components/Head';
 import SegmentedControl from '../components/SegmentedControl';
 import Modal from '../components/Modal';
+import ProjectTracker from '../components/ProjectTracker';
 import logoColor from '../public/LogoColor.svg';
 import logoBlack from '../public/LogoBlack.svg';
 import logoBackground from '../public/LogoBackground.svg';
@@ -28,13 +28,6 @@ type Content = {
   size: number;
   peer: string;
 };
-
-const ghFetcher = (root: string) =>
-  fetch('https://api.github.com/repos/myelnet/pop/' + root, {
-    headers: {
-      Accept: 'application/vnd.github.inertia-preview+json',
-    },
-  }).then((res) => res.json());
 
 function humanFileSize(bytes, si = false, dp = 1) {
   const thresh = si ? 1000 : 1024;
@@ -99,9 +92,6 @@ export default function Home() {
     setFile(null);
     setUploading(false);
   };
-  const {data: projects} = useSWR('projects', ghFetcher);
-  console.log(projects);
-
   return (
     <>
       <Head
@@ -274,7 +264,7 @@ export default function Home() {
                   </div>
                 </div>
                 <ul className={styles.framelist}>
-                  <li>
+                  <li className={styles.framelistitem}>
                     <span className={styles.listicon}>💪</span>
                     <div className={styles.itemmain}>
                       <h3>Resilience</h3>
@@ -282,7 +272,7 @@ export default function Home() {
                     </div>
                     <button className={styles.btn}>read more</button>
                   </li>
-                  <li>
+                  <li className={styles.framelistitem}>
                     <span className={styles.listicon}>🌍</span>
                     <div className={styles.itemmain}>
                       <h3>Scale</h3>
@@ -290,7 +280,7 @@ export default function Home() {
                     </div>
                     <button className={styles.btn}>read more</button>
                   </li>
-                  <li>
+                  <li className={styles.framelistitem}>
                     <span className={styles.listicon}>🏎</span>
                     <div className={styles.itemmain}>
                       <h3>Performance</h3>
@@ -298,7 +288,7 @@ export default function Home() {
                     </div>
                     <button className={styles.btn}>read more</button>
                   </li>
-                  <li>
+                  <li className={styles.framelistitem}>
                     <span className={styles.listicon}>🤝</span>
                     <div className={styles.itemmain}>
                       <h3>Ease of use</h3>
@@ -329,28 +319,9 @@ export default function Home() {
               up next.
             </p>
             <div className={styles.frameContainer}>
-              <div className={styles.frameContent}>
-                <div className={styles.frametop}>
-                  <div className={styles.tagspace}>
-                    <span className={styles.tagplanned}>planned</span>
-                  </div>
-                </div>
-                <ul className={styles.framelist}></ul>
-                <div className={styles.frametop}>
-                  <div className={styles.tagspace}>
-                    <span className={styles.tagprogress}>in progress</span>
-                  </div>
-                </div>
-                <ul className={styles.framelist}></ul>
-                <div className={styles.frametop}>
-                  <div className={styles.tagspace}>
-                    <span className={styles.tagcomplete}>complete</span>
-                  </div>
-                </div>
-                <ul className={styles.framelist}></ul>
-              </div>
+              <ProjectTracker />
             </div>
-            <div className={styles.framebackground3}>
+            <div className={styles.framebackground2}>
               <NextImage
                 src={backroundBlur}
                 alt="blur"

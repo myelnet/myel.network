@@ -362,37 +362,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
-
-/* .frameContainer:before { */
-/*   content: ""; */
-/*   position: absolute; */
-/*   display: block; */
-/*   top: -80px; */
-/*   left: -70px; */
-/*   width: 449px; */
-/*   height: 543px; */
-/*   background-color: #FC425A; */
-/*   opacity: 0.6; */
-/*   /1* filter: blur(200px); *1/ */
-/*   z-index: 1; */
-/*   pointer-events: none; */
-/* } */
-
-/* .frameContainer:after { */
-/*   content: ""; */
-/*   position: absolute; */
-/*   display: block; */
-/*   top: -80px; */
-/*   right: -70px; */
-/*   width: 449px; */
-/*   height: 543px; */
-/*   background-color: #0094FF; */
-/*   opacity: 0.6; */
-/*   /1* filter: blur(200px); *1/ */
-/*   z-index: 1; */
-/*   pointer-events: none; */
-/* } */
 
 .framebackground {
   position: absolute;
@@ -400,11 +371,6 @@
 }
 
 .framebackground2 {
-  position: absolute;
-  top: -100px;
-}
-
-.framebackground3 {
   position: absolute;
   top: -100px;
 }
@@ -491,13 +457,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .framelist li {
   display: flex;
-  align-items: center;
-  padding: 12px;
   width: 100%;
+}
+
+.framelistitem {
+  display: flex;
+  width: 100%;
+  padding: 12px;
+  align-items: center;
+}
+
+.framelistmax {
+  composes: framelist;
+  /* max-height: 100px; */
+  overflow: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex: 1;
 }
 
 .listicon {
@@ -523,6 +505,44 @@
   font-weight: 600;
   color: #808080;
   max-width: 240px;
+}
+
+.itemtodo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.itemtodo h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.itemtodo p {
+  font-weight: 600;
+  font-size: 15px;
+  color: #808080;
+}
+
+.itemtag {
+  width: 120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ghlogo {
+  color: #000;
+  height: 24px;
+  width: 24px;
+}
+
+.selector {
+  composes: taglight;
+  width: 100px;
+  margin-top: 14px;
+  margin-right: 14px;
+  outline: none;
 }
 
 .dropContainer {
@@ -614,6 +634,23 @@
 
 .backgroundLogo {
   display: none;
+}
+
+.framebackground {
+  position: absolute;
+  height: 1200px;
+  width: 1200px;
+}
+
+.framebackground2 {
+  position: absolute;
+  height: 1200px;
+  width: 1200px;
+}
+
+.framelist {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 }
 
