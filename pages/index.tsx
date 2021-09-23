@@ -2,20 +2,19 @@ import * as React from 'react';
 import {useLayoutEffect, useState} from 'react';
 import styles from './Home.module.css';
 import NextImage from 'next/image';
-import {useDropzone} from 'react-dropzone';
 
 import Image from '../components/Image';
 import MacWindowIcon from '../components/MacWidowIcon';
 import ShippingBoxIcon from '../components/ShippingBoxIcon';
 import Head from '../components/Head';
 import SegmentedControl from '../components/SegmentedControl';
-import Modal from '../components/Modal';
 import ProjectTracker from '../components/ProjectTracker';
+import Uploader from '../components/Uploader';
 import logoColor from '../public/LogoColor.svg';
 import logoBlack from '../public/LogoBlack.svg';
 import logoBackground from '../public/LogoBackground.svg';
-import logoDropper from '../public/LogoDropper.svg';
 import backroundBlur from '../public/BackgroundBlur.png';
+import humanFileSize from '../utils/humanFileSize';
 
 type Peer = {
   id: string;
@@ -28,30 +27,6 @@ type Content = {
   size: number;
   peer: string;
 };
-
-function humanFileSize(bytes, si = false, dp = 1) {
-  const thresh = si ? 1000 : 1024;
-
-  if (Math.abs(bytes) < thresh) {
-    return bytes + ' B';
-  }
-
-  const units = si
-    ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-    : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-  let u = -1;
-  const r = 10 ** dp;
-
-  do {
-    bytes /= thresh;
-    ++u;
-  } while (
-    Math.round(Math.abs(bytes) * r) / r >= thresh &&
-    u < units.length - 1
-  );
-
-  return bytes.toFixed(dp) + ' ' + units[u];
-}
 
 export default function Home() {
   const [mode, setMode] = useState('upload');
@@ -82,16 +57,6 @@ export default function Home() {
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
   });
-  const [uploading, setUploading] = useState(false);
-  const [file, setFile] = useState<File>(null);
-  const onDrop = (files) => {
-    setFile(files[0]);
-  };
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
-  const reset = () => {
-    setFile(null);
-    setUploading(false);
-  };
   return (
     <>
       <Head
@@ -186,16 +151,9 @@ export default function Home() {
                 </div>
                 <div className={styles.framebottom}>
                   {mode === 'upload' ? (
-                    <>
-                      <button
-                        className={styles.btn}
-                        onClick={() => setUploading(true)}>
-                        upload a file
-                      </button>
-                      <p className={styles.fineprint}>
-                        Uploaded files will be public
-                      </p>
-                    </>
+                    <Uploader
+                      addresses={peers.map((p) => p.region + '.myel.zone')}
+                    />
                   ) : (
                     <p className={styles.fineprint}>
                       Your file will download automaticaly.
@@ -204,35 +162,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <Modal actionTitle="Upload" isOpen={uploading} onDismiss={reset}>
-              {file ? (
-                <div className={styles.successContainer}>
-                  <div className={styles.successContent}>
-                    <span className={styles.taglight}>✅ File uploaded</span>
-                    <h2>
-                      <strong>{file.name}</strong>
-                    </h2>
-                    <h2>{humanFileSize(file.size)}</h2>
-                    <div className={styles.fineprint}>
-                      Your file was recieved by Peer 0012942. It is now cached
-                      on the Myel network and can be retrieved from anywhere.
-                    </div>
-                  </div>
-                  <button className={styles.blackBtn} onClick={reset}>
-                    dismiss
-                  </button>
-                </div>
-              ) : (
-                <div className={styles.dropContainer} {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  <span className={styles.taglight}>Upload a file</span>
-                  <NextImage src={logoDropper} alt="Drag on the logo" />
-                  <p className={styles.fineprint}>
-                    Drag and drop to upload a file of any size or type
-                  </p>
-                </div>
-              )}
-            </Modal>
             <div className={styles.framebackground}>
               <NextImage
                 src={backroundBlur}
