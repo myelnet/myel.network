@@ -13,7 +13,7 @@ const ghFetcher = (root: string, params?: any) => {
     headers: {
       Accept: 'application/vnd.github.inertia-preview+json',
       // this token can only read public repos
-      Authorization: 'token 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',
+      Authorization: 'token ' + process.env.NEXT_PUBLIC_GH_TOKEN,
     },
   }).then((res) => res.json());
 };
@@ -35,21 +35,23 @@ export default function ProjectTracker() {
   const [filter, setFilter] = useState('all');
   const {data: projects = []} = useSWR(params, ghFetcher);
 
-  const list = projects
-    .sort((pa, pb) => getStateOrder(pb) - getStateOrder(pa))
-    .filter((p) => {
-      switch (filter) {
-        case 'complete':
-          return p.state === 'closed';
-        case 'inprogress':
-          return p.state === 'open' && wip.test(p.name);
-        case 'planned':
-          return p.state === 'open' && !wip.test(p.name);
-        case 'all':
-        default:
-          return true;
-      }
-    });
+  const list = !Array.isArray(projects)
+    ? []
+    : projects
+        .sort((pa, pb) => getStateOrder(pb) - getStateOrder(pa))
+        .filter((p) => {
+          switch (filter) {
+            case 'complete':
+              return p.state === 'closed';
+            case 'inprogress':
+              return p.state === 'open' && wip.test(p.name);
+            case 'planned':
+              return p.state === 'open' && !wip.test(p.name);
+            case 'all':
+            default:
+              return true;
+          }
+        });
 
   return (
     <div className={styles.frameContent}>
