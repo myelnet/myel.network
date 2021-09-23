@@ -35,10 +35,12 @@
   padding-top: 22px;
   padding-left: 14px;
   padding-right: 14px;
-  color: white;
-  background-color: hsla(0,0%,100%,.2);
+  color: white !important;
+  background-color: hsla(0,0%,100%,.2) !important;
+  appearance: none;
   border-radius: 6px;
   border-width: 0px;
+  outline: none;
 }
 
 .longInput {
@@ -53,14 +55,15 @@
   left: 13px;
   transition-timing-function: ease-in;
   transition-duration: .125s;
+  transform-origin: top left;
   color: white;
   opacity: 0.8;
   pointer-events: none;
 }
 
 .labelMinimized {
-  font-size: 10px;
   top: 8px;
+  transform: scale(0.8);
 }
 
 .title {
