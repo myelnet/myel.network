@@ -1,6 +1,14 @@
 import NextImage from 'next/image';
 import {useState} from 'react';
 import useSWR from 'swr';
+import {
+  ListboxInput,
+  ListboxOption,
+  ListboxList,
+  ListboxPopover,
+  ListboxButton,
+} from '@reach/listbox';
+import {getCollisions} from '@reach/popover';
 import styles from '../pages/Home.module.css';
 import Octocat from './Octocat';
 
@@ -31,6 +39,41 @@ const getStateOrder = (p: any) => {
   return 3;
 };
 
+const popoverPos = (targetRect, popoverRect) => {
+  if (!targetRect || !popoverRect) {
+    return {};
+  }
+  const space = 8;
+
+  const {directionUp} = getCollisions(targetRect, popoverRect);
+  return {
+    width: targetRect.width,
+    left: targetRect.left,
+    top: directionUp
+      ? `${targetRect.top - popoverRect.height + window.pageYOffset + space}px`
+      : `${targetRect.top + targetRect.height + window.pageYOffset + space}px`,
+  };
+};
+
+const ArrowDown = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="15"
+      height="8"
+      viewBox="0 0 15 8"
+      fill="none">
+      <path
+        d="M1 0.999999L7.5 7L14 0.999999"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
 export default function ProjectTracker() {
   const [filter, setFilter] = useState('all');
   const {data: projects = []} = useSWR(params, ghFetcher);
@@ -53,6 +96,17 @@ export default function ProjectTracker() {
           }
         });
 
+  let prog = 0,
+    comp = 0,
+    plan = 0;
+  projects.forEach((p) =>
+    p.state === 'closed'
+      ? comp++
+      : p.state === 'open' && wip.test(p.name)
+      ? prog++
+      : plan++
+  );
+
   return (
     <div className={styles.frameContent}>
       <div className={styles.frametop}>
@@ -65,15 +119,34 @@ export default function ProjectTracker() {
             </a>
           </div>
           <div className={styles.frametopCenter}></div>
-          <select
-            name="filter"
-            className={styles.selector}
-            onChange={(evt) => setFilter(evt.target.value)}>
-            <option value="all">all</option>
-            <option value="planned">planned</option>
-            <option value="inprogress">in progress</option>
-            <option value="complete">complete</option>
-          </select>
+          <div className={styles.frametopPadding}>
+            <ListboxInput value={filter} onChange={setFilter}>
+              <ListboxButton>
+                {filter}
+                <ArrowDown />
+              </ListboxButton>
+              <ListboxPopover position={popoverPos}>
+                <ListboxList>
+                  <ListboxOption value="planned">
+                    <span className={styles.optplanned}>planned</span>
+                    <span className={styles.count}>({plan})</span>
+                  </ListboxOption>
+                  <ListboxOption value="inprogress">
+                    <span className={styles.optprogress}>in progress</span>
+                    <span className={styles.count}>({prog})</span>
+                  </ListboxOption>
+                  <ListboxOption value="complete">
+                    <span className={styles.optcomplete}>complete</span>
+                    <span className={styles.count}>({comp})</span>
+                  </ListboxOption>
+                  <ListboxOption value="all">
+                    <span className={styles.optdefault}>all</span>
+                    <span className={styles.count}>({projects.length})</span>
+                  </ListboxOption>
+                </ListboxList>
+              </ListboxPopover>
+            </ListboxInput>
+          </div>
         </div>
       </div>
       <ul className={styles.framelistmax}>
@@ -100,11 +173,6 @@ export default function ProjectTracker() {
           </li>
         ))}
       </ul>
-      <div className={styles.framebottom}>
-        <a href="https://github.com/myelnet/pop/issues" className={styles.btn}>
-          contribute
-        </a>
-      </div>
     </div>
   );
 }

@@ -337,3 +337,54 @@ pre[class*="language-"] {
 .token.inserted {
 	color: green;
 }
+
+/* Listbox */
+
+[data-reach-listbox-button] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  appearance: none;
+  color: var(--color-text);
+  font-weight: 600;
+  height: 36px;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  border-radius: 100px;
+  background-color: var(--color-accent);
+  border: none !important;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 6px 20px 0px #FC425A99;
+  width: 132px;
+}
+
+[data-reach-listbox-popover] {
+  z-index: 20;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px 0px #00000040 !important;
+  overflow: hidden;
+  border: none !important;
+}
+
+[data-reach-listbox-popover]:focus-within {
+  outline: none !important;
+}
+
+[data-reach-listbox-list] {
+  outline: none;
+}
+
+[data-reach-listbox-list] > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-reach-listbox-option][data-current-nav] {
+  background: rgba(0,0,0,0.06) !important;
+}

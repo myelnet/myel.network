@@ -393,6 +393,10 @@
   width: 73px;
 }
 
+.frametopPadding {
+  padding: 14px;
+}
+
 .frametopCenter {
   display: flex;
   flex: 1;
@@ -533,8 +537,8 @@
 
 .ghlogo {
   color: #000;
-  height: 24px;
-  width: 24px;
+  height: 32px;
+  width: 32px;
 }
 
 .selector {
@@ -582,6 +586,31 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.optdefault {
+  color: #000;
+  font-weight: 600;
+}
+
+.optplanned {
+  color: #239BFA;  
+  font-weight: 600;
+}
+
+.optprogress {
+  color: #C279FE;  
+  font-weight: 600;
+}
+
+.optcomplete {
+  color: #71D142;  
+  font-weight: 600;
+}
+
+.count {
+  color: #808080;
+  font-weight: 600;
 }
 
 @media (max-width: 767px) {
