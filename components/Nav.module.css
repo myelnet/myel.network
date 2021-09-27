@@ -105,6 +105,10 @@
   fill: var(--color-text);
 }
 
+.navTitle svg {
+  fill: var(--color-text);
+}
+
 @media only screen and (max-width: 767px) {
   .navContent {
     padding: 0 16px;

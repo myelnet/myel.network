@@ -10,15 +10,15 @@ import Head from '../components/Head';
 import SegmentedControl from '../components/SegmentedControl';
 import ProjectTracker from '../components/ProjectTracker';
 import Uploader from '../components/Uploader';
+import LogoIcon from '../components/LogoIcon';
 import logoColor from '../public/LogoColor.svg';
-import logoBlack from '../public/LogoBlack.svg';
 import logoBackground from '../public/LogoBackground.svg';
 import backroundBlur from '../public/BackgroundBlur.png';
 import humanFileSize from '../utils/humanFileSize';
 
 type Peer = {
   id: string;
-  region: string;
+  name: string;
   latency: number;
 };
 
@@ -33,18 +33,23 @@ export default function Home() {
   const [peers, setPeers] = useState<Peer[]>([
     {
       id: '12D3KooWStJfAywQmfaVFQDQYr9riDnEFG3VJ3qDGcTidvc4nQtc',
-      region: 'ohio',
+      name: 'ohio.myel.zone',
       latency: 0.738,
     },
     {
       id: '12D3KooWPQTuoHCKQJKNsfJqMbiGn7Ms1RLmqSqVmSVipcmYptrf',
-      region: 'simparis',
+      name: 'simparis.myel.zone',
       latency: 0.891,
     },
     {
       id: '12D3KooWJBZ6peowSj8GExHKqZKEBdNtBbz8AFp6YSnBCpLfJVoo',
-      region: 'antibes',
+      name: 'antibes.myel.zone',
       latency: 0.081,
+    },
+    {
+      id: '12D3KooWLLPFQHmEiF8Qc9XN54P3o7XBkxyL4ucq2p3ruG92J4zr',
+      name: 'colenyc.ngrok.io',
+      latency: 0.01,
     },
   ]);
   const [content, setContent] = useState<Content[]>([
@@ -74,7 +79,9 @@ export default function Home() {
                   The <strong>community</strong> powered content delivery
                   network for <strong>web3</strong> developers
                 </p>
-                <button className={styles.btn}>try it out</button>
+                <a className={styles.btn} href="#try">
+                  try it out
+                </a>
               </div>
               <div className={styles.liveLogo}>
                 <NextImage src={logoColor} alt="Myel logo" />
@@ -91,7 +98,9 @@ export default function Home() {
             </h2>
           </section>
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle2}>Try it out!</h2>
+            <h2 className={styles.sectionTitle2} id="try">
+              Try it out!
+            </h2>
             <p className={styles.sectionSubtitle2}>
               You can upload a file to <strong>Myel CDN</strong>, or retrieve an
               existing file stored on our <strong>decentalized network</strong>.
@@ -101,7 +110,7 @@ export default function Home() {
                 <div className={styles.frametop}>
                   <div className={styles.frametopHead}>
                     <div className={styles.frametopCorner}>
-                      <NextImage src={logoBlack} alt="Myel logo" />
+                      <LogoIcon />
                     </div>
                     <div className={styles.frametopCenter}>
                       <SegmentedControl
@@ -129,7 +138,7 @@ export default function Home() {
                               <div>
                                 {p.id.slice(0, 8)}...{p.id.slice(-4)}
                               </div>
-                              <div>{p.region}</div>
+                              <div>{p.name.split('.')[0]}</div>
                             </div>
                             <div className={styles.peerData}>{p.latency}s</div>
                           </li>
@@ -151,9 +160,7 @@ export default function Home() {
                 </div>
                 <div className={styles.framebottom}>
                   {mode === 'upload' ? (
-                    <Uploader
-                      addresses={peers.map((p) => p.region + '.myel.zone')}
-                    />
+                    <Uploader addresses={peers.map((p) => p.name)} />
                   ) : (
                     <p className={styles.fineprint}>
                       Your file will download automaticaly.

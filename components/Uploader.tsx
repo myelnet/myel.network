@@ -51,7 +51,11 @@ export default function Uploader({addresses}: UploaderProps) {
   };
 
   const submit = async (file: File): Promise<string[]> => {
-    return Promise.all(addresses.map((addr) => put(file, addr)));
+    return Promise.all(
+      addresses
+        .filter((addr) => /cole/.test(addr))
+        .map((addr) => put(file, addr))
+    );
   };
 
   return (

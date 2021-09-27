@@ -6,6 +6,7 @@ import Link from 'next/link';
 import NextImage from 'next/image';
 import styles from './Nav.module.css';
 import ChevronDownIcon from './ChevronDownIcon';
+import LogoIcon from './LogoIcon';
 
 function NavLink({children, activeClassName, ...props}) {
   const {asPath} = useRouter();
@@ -63,12 +64,9 @@ export default function Nav() {
       <div className={styles.navContent}>
         <div className={styles.navTitle}>
           <Link href="/">
-            <NextImage
-              src="/LogoWhite.svg"
-              alt="Myel Logo"
-              width={51}
-              height={34}
-            />
+            <a>
+              <LogoIcon />
+            </a>
           </Link>
         </div>
         <div className={styles.navMenu}>
