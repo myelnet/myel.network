@@ -108,7 +108,7 @@ button:disabled {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -150,19 +150,55 @@ h5 {
 
 body,
 body[data-theme="dark"] {
-  --color-bg: #030B1C;
+  --color-bg: black;
   --color-text: white;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
   --color-nav: rgba(29,29,31,0.72);
-  --color-footer: black;
+  --color-footer: rgba(0, 0, 0, 0.1);
   --color-border: rgba(255, 255, 255, 0.4);
+  --color-accent: #FC425A;
+  --color-modal-bg: #FFF;
 }
 
 body[data-theme="light"] {
   --color-bg: white;
   --color-text: black;
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
   --color-nav: rgba(255,255,255,0.72);
   --color-footer: #fafafa;
   --color-border: rgba(0, 0, 0, 0.1);
+  --color-accent: #FC425A;
+  --color-modal-bg: #000;
+}
+
+label {
+  cursor: inherit;
+}
+
+/* =============== Fonts ==================== */
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 700;
+  src: url("/fonts/SF-Pro-Rounded-Bold.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 600;
+  src: url("/fonts/SF-Pro-Rounded-Semibold.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 500;
+  src: url("/fonts/SF-Pro-Rounded-Medium.otf");
+}
+
+@font-face {
+  font-family: 'SF Pro Rounded';
+  font-weight: 400;
+  src: url("/fonts/SF-Pro-Rounded-Regular.otf");
 }
 
 
@@ -300,4 +336,55 @@ pre[class*="language-"] {
 
 .token.inserted {
 	color: green;
+}
+
+/* Listbox */
+
+[data-reach-listbox-button] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  appearance: none;
+  color: var(--color-text);
+  font-weight: 600;
+  height: 36px;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  border-radius: 100px;
+  background-color: var(--color-accent);
+  border: none !important;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 6px 20px 0px #FC425A99;
+  width: 132px;
+}
+
+[data-reach-listbox-popover] {
+  z-index: 20;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px 0px #00000040 !important;
+  overflow: hidden;
+  border: none !important;
+}
+
+[data-reach-listbox-popover]:focus-within {
+  outline: none !important;
+}
+
+[data-reach-listbox-list] {
+  outline: none;
+}
+
+[data-reach-listbox-list] > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+[data-reach-listbox-option][data-current-nav] {
+  background: rgba(0,0,0,0.06) !important;
 }

@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--color-footer);
   font-size: 0.8rem;
+  z-index: 0;
 }
 
 .footer a:hover {

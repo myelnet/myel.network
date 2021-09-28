@@ -7,13 +7,6 @@ import styles from './SignUp.module.css';
 
 type State = 'idle' | 'sending' | 'success' | 'error';
 
-const credentials = {
-  apiKey: process.env.REACT_APP_FLEEK_KEY!,
-  apiSecret: process.env.REACT_APP_FLEEK_SECRET!,
-};
-
-const FILE_KEY = 'email.json';
-
 export default function SignUp() {
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
@@ -68,10 +61,11 @@ export default function SignUp() {
       />
       <div className={styles.container}>
         <aside className={styles.aside}>
-          <h2 className={styles.title}>Request early access</h2>
+          <h2 className={styles.title}>Register to run a node</h2>
           <p className={styles.subtitle}>
-            We are starting to onboard providers and developers on the network.
-            Drop your email and we'll reach out to get you setup.
+            We are starting to onboard providers on the network. Drop your email
+            and we'll reach out to get you setup. If you just want to stay in
+            the loop, that's cool too.
           </p>
         </aside>
         {state === 'sending' ? (
@@ -103,6 +97,7 @@ export default function SignUp() {
                 className={styles.input}
                 onFocus={() => setEmailFocused(true)}
                 onBlur={() => setEmailFocused(false)}
+                autoComplete="off"
               />
               <span
                 className={
@@ -127,7 +122,7 @@ export default function SignUp() {
                   styles.formLabel +
                   (descFocused || !!desc ? ' ' + styles.labelMinimized : '')
                 }>
-                What do you want to use Myel for?
+                Describe your setup, what city are you located in etc.
               </span>
             </div>
             <div className={styles.actions}>
