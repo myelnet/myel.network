@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       <Head
-        title="Myel - Community Powered Content Delivery Network"
+        title="Myel - Community Powered Content Delivery Network for Web 3.0"
         description="Myel is the missing piece for content delivery in the Web 3.0 stack. Myel provides fast, resilient and trustless data transfers for Web 3.0 applications using IPFS and Filecoin protocols."
         currentURL="https://www.myel.network"
       />
@@ -89,7 +89,7 @@ export default function Home() {
           <h2 className={styles.sectionTitle2}>Try it out!</h2>
           <p className={styles.sectionSubtitle2}>
             You can upload a file to <strong>Myel CDN</strong>, or retrieve an
-            existing file stored on our <strong>decentalized network</strong>.
+            existing file stored on our <strong>decentralized network</strong>.
           </p>
           <div className={styles.frameContainer}>
             <div className={styles.frameContent}>
@@ -181,7 +181,9 @@ export default function Home() {
                     <h3>Resilience</h3>
                     <p>No single point of failure</p>
                   </div>
-                  <button className={styles.btn}>read more</button>
+                  <a className={styles.btn} href="/blog" target="_blank">
+                    read more
+                  </a>
                 </li>
                 <li className={styles.framelistitem}>
                   <span className={styles.listicon}>🌍</span>
@@ -189,7 +191,9 @@ export default function Home() {
                     <h3>Scale</h3>
                     <p>$0 to add a node</p>
                   </div>
-                  <button className={styles.btn}>read more</button>
+                  <a className={styles.btn} href="/blog" target="_blank">
+                    read more
+                  </a>
                 </li>
                 <li className={styles.framelistitem}>
                   <span className={styles.listicon}>🏎</span>
@@ -197,7 +201,9 @@ export default function Home() {
                     <h3>Performance</h3>
                     <p>Pure peer-to-peer client ↔ network connection</p>
                   </div>
-                  <button className={styles.btn}>read more</button>
+                  <a className={styles.btn} href="/blog" target="_blank">
+                    read more
+                  </a>
                 </li>
                 <li className={styles.framelistitem}>
                   <span className={styles.listicon}>🤝</span>
@@ -205,7 +211,9 @@ export default function Home() {
                     <h3>Ease of use</h3>
                     <p>Thousands of nodes deployed with a single click</p>
                   </div>
-                  <button className={styles.btn}>read more</button>
+                  <a className={styles.btn} href="/blog" target="_blank">
+                    read more
+                  </a>
                 </li>
               </ul>
             </div>

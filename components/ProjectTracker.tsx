@@ -112,7 +112,7 @@ export default function ProjectTracker() {
       <div className={styles.frametop}>
         <div className={styles.frametopHead}>
           <div className={styles.frametopCorner}>
-            <a href="https://github.com/myelnet/pop/projects">
+            <a href="https://github.com/myelnet/pop/projects" target="_blank">
               <div className={styles.ghlogo}>
                 <Octocat />
               </div>
