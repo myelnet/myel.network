@@ -157,7 +157,7 @@ export default function ProjectTracker() {
               target="_blank"
               className={styles.framelistitem}>
               <div className={styles.itemtodo}>
-                <h3>{p.name}</h3>
+                <h3>{p.name.replace(/\(WIP\)/, '')}</h3>
                 <p>{p.body}</p>
               </div>
               <div className={styles.itemtag}>

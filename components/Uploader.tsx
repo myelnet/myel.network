@@ -7,22 +7,35 @@ import Spinner from './Spinner';
 import logoDropper from '../public/LogoDropper.svg';
 import humanFileSize from '../utils/humanFileSize';
 
-type UploaderProps = {
-  addresses: string[];
+export type Peer = {
+  id: string;
+  name: string;
+  latency: number;
 };
 
-export default function Uploader({addresses}: UploaderProps) {
+export type Content = {
+  cid: string;
+  size: number;
+  peer: string;
+};
+
+type UploaderProps = {
+  peers: Peer[];
+  onComplete: (items: Content[]) => void;
+};
+
+export default function Uploader({peers, onComplete}: UploaderProps) {
   const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
   const [file, setFile] = useState<File>(null);
-  const [roots, setRoots] = useState<string[]>([]);
+  const [content, setContent] = useState<Content[]>([]);
   const onDrop = (files) => {
     setLoading(true);
     setFile(files[0]);
     submit(files[0])
-      .then(setRoots)
+      .then(setContent)
       .then(() => setLoading(false))
       .catch((err) => {
         console.log(err);
@@ -35,11 +48,11 @@ export default function Uploader({addresses}: UploaderProps) {
     setOpen(false);
   };
 
-  const put = async (file: File, addr: string): Promise<string> => {
+  const put = async (file: File, addr: Peer): Promise<Content> => {
     const body = new FormData();
     body.append('file', file, file.name);
 
-    const response = await fetch('https://' + addr, {
+    const response = await fetch('https://' + addr.name, {
       method: 'POST',
       body,
     });
@@ -47,15 +60,15 @@ export default function Uploader({addresses}: UploaderProps) {
     if (!rootCID) {
       throw new Error('provider did not return CID');
     }
-    return rootCID;
+    return {
+      cid: rootCID,
+      size: file.size,
+      peer: addr.id,
+    };
   };
 
-  const submit = async (file: File): Promise<string[]> => {
-    return Promise.all(
-      addresses
-        .filter((addr) => /cole/.test(addr))
-        .map((addr) => put(file, addr))
-    );
+  const submit = async (file: File): Promise<Content[]> => {
+    return Promise.all(peers.slice(-1).map((addr) => put(file, addr)));
   };
 
   return (
@@ -78,8 +91,8 @@ export default function Uploader({addresses}: UploaderProps) {
               </h2>
               <h2>{humanFileSize(file.size)}</h2>
               <div className={styles.fineprint}>
-                Your file was recieved by {roots.length} peers. It is now cached
-                on the Myel network and can be retrieved from anywhere.
+                Your file was recieved by {content.length} peers. It is now
+                cached on the Myel network and can be retrieved from anywhere.
               </div>
             </div>
             <button className={styles.blackBtn} onClick={reset}>
