@@ -41,13 +41,7 @@ export default function Home() {
       latency: 0.011,
     },
   ]);
-  const [content, setContent] = useState<Content[]>([
-    {
-      cid: 'bafyreihhmnnulvfqm4t3lz56csrirywbfqylocusz45xbcwxt7vgulw4uy',
-      peer: '12D3KooWStJfAywQmfaVFQDQYr9riDnEFG3VJ3qDGcTidvc4nQtc',
-      size: 375400,
-    },
-  ]);
+  const [content, setContent] = useState<Content[]>([]);
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
   });

@@ -26,24 +26,30 @@ export default function Retriever({peers, content}) {
   return (
     <>
       <div className={styles.framescroll}>
-        <u className={styles.framescroller}>
-          {clist.map((c) => (
-            <li
-              key={c.cid + c.peer}
-              className={styles.contentRow}
-              onClick={() => retrieve(c)}>
-              <div className={styles.peerHeading}>
-                <div>
-                  {c.cid.slice(0, 8)}...{c.cid.slice(-8)}
+        {clist.length ? (
+          <u className={styles.framescroller}>
+            {clist.map((c) => (
+              <li
+                key={c.cid + c.peer}
+                className={styles.contentRow}
+                onClick={() => retrieve(c)}>
+                <div className={styles.peerHeading}>
+                  <div>
+                    {c.cid.slice(0, 8)}...{c.cid.slice(-8)}
+                  </div>
+                  <div>{humanFileSize(c.size)}</div>
                 </div>
-                <div>{humanFileSize(c.size)}</div>
-              </div>
-              <div className={styles.peerData}>
-                {c.peer.slice(0, 4)}...{c.peer.slice(-8)}
-              </div>
-            </li>
-          ))}
-        </u>
+                <div className={styles.peerData}>
+                  {c.peer.slice(0, 4)}...{c.peer.slice(-8)}
+                </div>
+              </li>
+            ))}
+          </u>
+        ) : (
+          <div className={styles.contentRow}>
+            <p className={styles.fineprint}>No content yet</p>
+          </div>
+        )}
         {loading && (
           <div className={styles.frameoverlay}>
             <Spinner />

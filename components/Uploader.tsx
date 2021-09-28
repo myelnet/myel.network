@@ -68,7 +68,7 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
   };
 
   const submit = async (file: File): Promise<Content[]> => {
-    return Promise.all(peers.slice(-1).map((addr) => put(file, addr)));
+    return Promise.all(peers.map((addr) => put(file, addr)));
   };
 
   return (
