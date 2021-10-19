@@ -10,7 +10,8 @@ import humanFileSize from '../utils/humanFileSize';
 export type Peer = {
   id: string;
   name: string;
-  latency: number;
+  latency?: number;
+  location?: string;
 };
 
 export type Content = {

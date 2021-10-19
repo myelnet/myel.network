@@ -66,9 +66,9 @@ const ArrowDown = () => {
       <path
         d="M1 0.999999L7.5 7L14 0.999999"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
