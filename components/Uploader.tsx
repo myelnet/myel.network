@@ -29,6 +29,7 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
   const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const [file, setFile] = useState<File>(null);
   const [content, setContent] = useState<Content[]>([]);
@@ -40,13 +41,15 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
       .then(() => setLoading(false))
       .catch((err) => {
         console.log(err);
-        reset();
+        setError(true);
+        setLoading(false);
       });
   };
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
   const reset = () => {
     setFile(null);
     setOpen(false);
+    setError(false);
   };
 
   const put = async (file: File, addr: Peer): Promise<Content> => {
@@ -79,9 +82,13 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
       </button>
       <p className={styles.fineprint}>Uploaded files will be public</p>
       <Modal actionTitle="Upload" isOpen={open} onDismiss={reset}>
-        {loading ? (
+        {loading || error ? (
           <div className={styles.loadingContainer}>
-            <Spinner />
+            {loading ? (
+              <Spinner />
+            ) : (
+              <div className={styles.fineprint}>Something went wrong</div>
+            )}
           </div>
         ) : file ? (
           <div className={styles.successContainer}>
