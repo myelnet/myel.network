@@ -6,11 +6,13 @@ import Modal from './Modal';
 import Spinner from './Spinner';
 import logoDropper from '../public/LogoDropper.svg';
 import humanFileSize from '../utils/humanFileSize';
+import {peerAddr} from '../utils/usePeers';
 
 export type Peer = {
   id: string;
   name: string;
-  latency: number;
+  latency?: number;
+  location?: string;
 };
 
 export type Content = {
@@ -28,6 +30,7 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
   const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const [file, setFile] = useState<File>(null);
   const [content, setContent] = useState<Content[]>([]);
@@ -35,17 +38,22 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     setLoading(true);
     setFile(files[0]);
     submit(files[0])
-      .then(setContent)
-      .then(() => setLoading(false))
+      .then((items) => {
+        setContent(items);
+        onComplete(items);
+        setLoading(false);
+      })
       .catch((err) => {
         console.log(err);
-        reset();
+        setError(true);
+        setLoading(false);
       });
   };
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
   const reset = () => {
     setFile(null);
     setOpen(false);
+    setError(false);
   };
 
   const put = async (file: File, addr: Peer): Promise<Content> => {
@@ -63,12 +71,14 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     return {
       cid: rootCID,
       size: file.size,
-      peer: addr.id,
+      peer: peerAddr(addr),
     };
   };
 
+  // replicate with 4 peers only. We don't want this demo to stress the network too much yet.
+  // TODO: make this adjustable
   const submit = async (file: File): Promise<Content[]> => {
-    return Promise.all(peers.map((addr) => put(file, addr)));
+    return Promise.all(peers.slice(0, 4).map((addr) => put(file, addr)));
   };
 
   return (
@@ -78,9 +88,13 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
       </button>
       <p className={styles.fineprint}>Uploaded files will be public</p>
       <Modal actionTitle="Upload" isOpen={open} onDismiss={reset}>
-        {loading ? (
+        {loading || error ? (
           <div className={styles.loadingContainer}>
-            <Spinner />
+            {loading ? (
+              <Spinner />
+            ) : (
+              <div className={styles.fineprint}>Something went wrong</div>
+            )}
           </div>
         ) : file ? (
           <div className={styles.successContainer}>

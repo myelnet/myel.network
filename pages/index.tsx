@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {useLayoutEffect, useState} from 'react';
+import {useLayoutEffect, useState, useEffect} from 'react';
 import styles from './Home.module.css';
 import NextImage from 'next/image';
+import useSWR from 'swr';
 
 import Image from '../components/Image';
 import MacWindowIcon from '../components/MacWidowIcon';
@@ -12,36 +13,36 @@ import ProjectTracker from '../components/ProjectTracker';
 import Uploader, {Peer, Content} from '../components/Uploader';
 import Retriever from '../components/Retriever';
 import LogoIcon from '../components/LogoIcon';
+import PeerRow from '../components/PeerRow';
 import logoColor from '../public/LogoColor.svg';
 import logoBackground from '../public/LogoBackground.svg';
 import backroundBlur from '../public/BackgroundBlur.png';
 import humanFileSize from '../utils/humanFileSize';
+import usePeers from '../utils/usePeers';
+
+const cfFetcher = (path: string) => {
+  const url = 'https://routing.myel.workers.dev/' + path;
+  return fetch(url).then((res) => res.json());
+};
 
 export default function Home() {
   const [mode, setMode] = useState('upload');
-  const [peers, setPeers] = useState<Peer[]>([
-    {
-      id: '12D3KooWStJfAywQmfaVFQDQYr9riDnEFG3VJ3qDGcTidvc4nQtc',
-      name: 'ohio.myel.zone',
-      latency: 0.738,
-    },
-    {
-      id: '12D3KooWPQTuoHCKQJKNsfJqMbiGn7Ms1RLmqSqVmSVipcmYptrf',
-      name: 'simparis.myel.zone',
-      latency: 0.891,
-    },
-    {
-      id: '12D3KooWJBZ6peowSj8GExHKqZKEBdNtBbz8AFp6YSnBCpLfJVoo',
-      name: 'antibes.myel.zone',
-      latency: 0.081,
-    },
-    {
-      id: '12D3KooWLLPFQHmEiF8Qc9XN54P3o7XBkxyL4ucq2p3ruG92J4zr',
-      name: 'colenyc.ngrok.io',
-      latency: 0.011,
-    },
-  ]);
+  const {data: deferred = []} = useSWR('list', cfFetcher);
   const [content, setContent] = useState<Content[]>([]);
+  const {peers} = usePeers();
+
+  useEffect(() => {
+    const records: Content[] = deferred?.map((def, i) => {
+      return {
+        cid: def.k.split(':')[0],
+        size: def.s,
+        peer: def.v,
+      };
+    });
+    if (records.length > 0) {
+      setContent(records);
+    }
+  }, [deferred]);
   useLayoutEffect(() => {
     document.body.dataset.theme = 'dark';
   });
@@ -114,22 +115,17 @@ export default function Home() {
                   <div className={styles.framescroll}>
                     <ul className={styles.framescroller}>
                       {peers.map((p) => (
-                        <li key={p.id} className={styles.peerRow}>
-                          <div className={styles.peerHeading}>
-                            <div>
-                              {p.id.slice(0, 8)}...{p.id.slice(-4)}
-                            </div>
-                            <div>{p.name.split('.')[0]}</div>
-                          </div>
-                          <div className={styles.peerData}>{p.latency}s</div>
-                        </li>
+                        <PeerRow key={p.id} {...p} />
                       ))}
                     </ul>
                   </div>
                   <div className={styles.framebottom}>
                     <Uploader
                       peers={peers}
-                      onComplete={(added) => setContent(content.concat(added))}
+                      onComplete={(added) => {
+                        setContent(content.concat(added));
+                        setMode('retrieve');
+                      }}
                     />
                   </div>
                 </>

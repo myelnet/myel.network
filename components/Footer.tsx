@@ -12,11 +12,11 @@ export default function Footer() {
             <p>Content delivery network for the web3.0</p>
             <ul>
               <li>
-                <Link href="/sign-up">Request access</Link>
+                <Link href="/sign-up">run a node</Link>
               </li>
               <li>
                 <Link href="/blog">
-                  <a>Blog</a>
+                  <a>blog</a>
                 </Link>
               </li>
             </ul>
@@ -36,7 +36,7 @@ export default function Footer() {
             <h6>Developers</h6>
             <ul>
               <li>
-                <a href="https://myel.dev">Docs</a>
+                <a href="https://myel.dev">docs</a>
               </li>
             </ul>
           </div>
