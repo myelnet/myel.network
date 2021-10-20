@@ -64,15 +64,23 @@ export default function usePeers(): UsePeersResult {
     Promise.all(
       peers.map(async (p) => {
         const start = new Date().getTime();
-        // fail a handshake to test latency
-        try {
-          await fetch('http://' + p.name);
-        } catch (e) {
+        const calcTime = () => {
           const end = new Date().getTime();
           return {
             ...p,
             latency: (end - start) / 1000,
           };
+        };
+        // fail a handshake to test latency
+        try {
+          await fetch('https://' + p.name, {
+            headers: {
+              Accept: 'text/html',
+            },
+          });
+          return calcTime();
+        } catch (e) {
+          return calcTime();
         }
       })
     ).then((pwl) => setPeers(pwl.sort((pa, pb) => pa.latency - pb.latency)));
