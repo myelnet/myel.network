@@ -122,7 +122,10 @@ export default function Home() {
                   <div className={styles.framebottom}>
                     <Uploader
                       peers={peers}
-                      onComplete={(added) => setContent(content.concat(added))}
+                      onComplete={(added) => {
+                        setContent(content.concat(added));
+                        setMode('retrieve');
+                      }}
                     />
                   </div>
                 </>

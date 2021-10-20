@@ -5,6 +5,7 @@ import styles from '../pages/Home.module.css';
 import humanFileSize from '../utils/humanFileSize';
 import Spinner from './Spinner';
 import Modal from './Modal';
+import {peerAddr} from '../utils/usePeers';
 
 type RetrieverProps = {
   peers: Peer[];
@@ -27,9 +28,16 @@ export default function Retriever({peers, content}) {
     acc[p.id] = p;
     return acc;
   }, {});
-  const clist = content.filter(
-    (c) => !!peermap[new Multiaddr(c.peer).getPeerId()]
-  );
+  const clist = content
+    .filter((c) => !!peermap[new Multiaddr(c.peer).getPeerId()])
+    .map((c) => {
+      const peer = {
+        id: new Multiaddr(c.peer).getPeerId(),
+        name: c.peer.split('/')[2],
+      };
+
+      return {...c, peer: peerAddr(peer)};
+    });
   const retrieve = async (content: Content) => {
     try {
       setLoading(true);

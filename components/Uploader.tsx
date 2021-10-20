@@ -6,6 +6,7 @@ import Modal from './Modal';
 import Spinner from './Spinner';
 import logoDropper from '../public/LogoDropper.svg';
 import humanFileSize from '../utils/humanFileSize';
+import {peerAddr} from '../utils/usePeers';
 
 export type Peer = {
   id: string;
@@ -37,8 +38,11 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     setLoading(true);
     setFile(files[0]);
     submit(files[0])
-      .then(setContent)
-      .then(() => setLoading(false))
+      .then((items) => {
+        setContent(items);
+        onComplete(items);
+        setLoading(false);
+      })
       .catch((err) => {
         console.log(err);
         setError(true);
@@ -67,7 +71,7 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     return {
       cid: rootCID,
       size: file.size,
-      peer: addr.id,
+      peer: peerAddr(addr),
     };
   };
 
