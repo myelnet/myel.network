@@ -28,7 +28,7 @@ export default function Footer() {
                 <a href="https://github.com/myelnet/pop">pop</a>
               </li>
               <li>
-                <a href="https://github.com/myel/myel.js">myel.js</a>
+                <a href="https://github.com/myelnet/myel.js">myel.js</a>
               </li>
             </ul>
           </div>
