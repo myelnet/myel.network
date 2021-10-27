@@ -1,8 +1,15 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useMemo} from 'react';
 import {Peer} from '../components/Uploader';
+
+type UsePeersParams = {
+  ping: boolean;
+};
 
 type UsePeersResult = {
   peers: Peer[];
+  selectedPeers: Peer[];
+  selectPeer: (id: string) => void;
+  selected: {[key: string]: boolean};
 };
 
 export function peerAddr(p: Peer): string {
@@ -57,34 +64,57 @@ const defaultPeers = [
   },
 ];
 
-export default function usePeers(): UsePeersResult {
+export default function usePeers(
+  {ping}: UsePeersParams = {ping: true}
+): UsePeersResult {
   const [peers, setPeers] = useState<Peer[]>(defaultPeers);
+  const [selected, setSelected] = useState<{[key: string]: boolean}>({});
 
   useEffect(() => {
-    Promise.all(
-      peers.map(async (p) => {
-        const start = new Date().getTime();
-        const calcTime = () => {
-          const end = new Date().getTime();
-          return {
-            ...p,
-            latency: (end - start) / 1000,
+    if (ping) {
+      Promise.all(
+        peers.map(async (p) => {
+          const start = new Date().getTime();
+          const calcTime = () => {
+            const end = new Date().getTime();
+            return {
+              ...p,
+              latency: (end - start) / 1000,
+            };
           };
-        };
-        // fail a handshake to test latency
-        try {
-          await fetch('https://' + p.name, {
-            headers: {
-              Accept: 'text/html',
-            },
-          });
-          return calcTime();
-        } catch (e) {
-          return calcTime();
-        }
-      })
-    ).then((pwl) => setPeers(pwl.sort((pa, pb) => pa.latency - pb.latency)));
+          // fail a handshake to test latency
+          try {
+            await fetch('https://' + p.name, {
+              headers: {
+                Accept: 'text/html',
+              },
+            });
+            return calcTime();
+          } catch (e) {
+            return calcTime();
+          }
+        })
+      ).then((pwl) => {
+        // sort by smallest latency
+        const sorted = pwl.sort((pa, pb) => pa.latency - pb.latency);
+        // select the first 4 by default
+        const first4 = sorted
+          .slice(0, 4)
+          .reduce((sel, p) => ({...sel, [p.id]: true}), {});
+        setPeers(sorted);
+        setSelected(first4);
+      });
+    }
   }, []);
 
-  return {peers};
+  const selectPeer = (id: string) => {
+    setSelected({...selected, [id]: !selected[id]});
+  };
+
+  const selectedPeers = useMemo(() => peers.filter((p) => selected[p.id]), [
+    peers,
+    selected,
+  ]);
+
+  return {peers, selectPeer, selected, selectedPeers};
 }

@@ -29,7 +29,7 @@ export default function Home() {
   const [mode, setMode] = useState('upload');
   const {data: deferred = []} = useSWR('list', cfFetcher);
   const [content, setContent] = useState<Content[]>([]);
-  const {peers} = usePeers();
+  const {peers, selected, selectPeer, selectedPeers} = usePeers({ping: true});
 
   useEffect(() => {
     const records: Content[] = deferred?.map((def, i) => {
@@ -115,13 +115,18 @@ export default function Home() {
                   <div className={styles.framescroll}>
                     <ul className={styles.framescroller}>
                       {peers.map((p) => (
-                        <PeerRow key={p.id} {...p} />
+                        <PeerRow
+                          key={p.id}
+                          {...p}
+                          selected={selected[p.id]}
+                          onSelect={selectPeer}
+                        />
                       ))}
                     </ul>
                   </div>
                   <div className={styles.framebottom}>
                     <Uploader
-                      peers={peers}
+                      peers={selectedPeers}
                       onComplete={(added) => {
                         setContent(content.concat(added));
                         setMode('retrieve');
