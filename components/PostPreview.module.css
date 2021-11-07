@@ -23,9 +23,11 @@
   margin-bottom: 1em;
 }
 
+@media (min-width: 770px) {
 .preview:hover > .framebackground {
   cursor: pointer;
   opacity: 1;
+}
 }
 
 .framebackground {
