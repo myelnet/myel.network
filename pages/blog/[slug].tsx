@@ -8,15 +8,14 @@ import PostBody from '../../components/PostBody';
 import {getPostBySlug, getAllPosts} from '../../lib/getPosts';
 import markdownToHtml from '../../lib/markdownToHtml';
 import Head from '../../components/Head';
+import PostCollection from '../../components/PostCollection';
 
 type Props = {
   post: Post;
+  allPosts: Post[];
 };
 
-export default function BlogPost({post}: Props) {
-  useLayoutEffect(() => {
-    document.body.dataset.theme = 'light';
-  });
+export default function BlogPost({post, allPosts}: Props) {
   return (
     <Layout>
       <Head
@@ -36,6 +35,7 @@ export default function BlogPost({post}: Props) {
         />
         <PostBody content={post.content} />
       </article>
+      {allPosts.length > 0 && <PostCollection posts={allPosts} />}
     </Layout>
   );
 }
@@ -57,6 +57,14 @@ export async function getStaticProps({params}: Params) {
     'coverImage',
   ]);
   const content = await markdownToHtml(post.content || '');
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ]).filter((p) => p.slug !== params.slug);
 
   return {
     props: {
@@ -64,6 +72,7 @@ export async function getStaticProps({params}: Params) {
         ...post,
         content,
       },
+      allPosts,
     },
   };
 }

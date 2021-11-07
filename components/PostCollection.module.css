@@ -1,9 +1,8 @@
 .container {
-  display: grid;
-  grid-row-gap: 5rem;
-  row-gap: 5rem;
-  grid-template-column: repeat(1, minmax(0, 1fr));
-  margin-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
 }
 
 .title {
@@ -13,18 +12,11 @@
 @media (min-width: 768px) {
 
   .container {
-    grid-row-gap: 8rem;
-    row-gap: 8rem;
-    grid-column-gap: 4rem;
-    column-gap: 4rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
 }
 
 @media (min-width: 1024px) {
    .container {
-    grid-column-gap: 8rem;
-    column-gap: 8rem;
   }
 }

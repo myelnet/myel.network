@@ -1,5 +1,5 @@
 .text { 
-  max-width: 42rem;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -16,6 +16,9 @@
 
 .text p {
   margin-bottom: 1rem;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .text a {

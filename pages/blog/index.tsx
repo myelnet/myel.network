@@ -12,9 +12,6 @@ type Props = {
 };
 
 export default function BlogIndex({allPosts}: Props) {
-  useLayoutEffect(() => {
-    document.body.dataset.theme = 'light';
-  });
   return (
     <>
       <Head
@@ -23,10 +20,9 @@ export default function BlogIndex({allPosts}: Props) {
         currentURL="https://www.myel.network"
       />
       <Layout
-        title="Blog."
+        title="Blog"
         subtitle="Read the latest about development of the Myel network.">
-        <HeroPost {...allPosts[0]} />
-        {allPosts.length > 1 && <PostCollection posts={allPosts.slice(1)} />}
+        {allPosts.length > 0 && <PostCollection posts={allPosts} />}
       </Layout>
     </>
   );

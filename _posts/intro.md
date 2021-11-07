@@ -1,6 +1,6 @@
 ---
 title: 'Myel: A Community Powered Content Delivery Network'
-coverImage: '/assets/blog/frogcover.jpeg'
+coverImage: '/assets/blog/eclipse.jpeg'
 excerpt: 'Learn more about Myel, a community powered content delivery network, as I guide you through hosting a simple blog on Myel.'
 date: '2021-01-07T05:35:07.322Z'
 author:

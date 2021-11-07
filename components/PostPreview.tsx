@@ -5,6 +5,7 @@ import DateFormatter from './DateFormatter';
 import Avatar from './Avatar';
 import {Author} from '../types';
 import styles from './PostPreview.module.css';
+import backroundBlur from '../public/BackgroundBlur.png';
 
 type Props = {
   title: string;
@@ -26,6 +27,22 @@ export default function PostPreview({
   const path = `/blog/${slug}`;
   return (
     <div className={styles.preview}>
+      <div className={styles.framebackground}>
+        <Image
+          src={backroundBlur}
+          alt="blur"
+          height={500}
+          width={900}
+          layout="fixed"
+        />
+      </div>
+
+      <div className={styles.date}>
+        <DateFormatter dateString={date} />
+      </div>
+      <h3>
+        <Link href={path}>{title}</Link>
+      </h3>
       <div className={styles.cover}>
         <Link href={path}>
           <a>
@@ -38,14 +55,6 @@ export default function PostPreview({
           </a>
         </Link>
       </div>
-      <h3>
-        <Link href={path}>{title}</Link>
-      </h3>
-      <div className={styles.date}>
-        <DateFormatter dateString={date} />
-      </div>
-      <p>{excerpt}</p>
-      <Avatar {...author} />
     </div>
   );
 }

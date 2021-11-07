@@ -1,6 +1,6 @@
 ---
 title: 'Optimal Content Allocation on the Myel network'
-coverImage: '/assets/blog/neurons.jpeg'
+coverImage: '/assets/blog/waves.jpeg'
 excerpt: 'With an infinite influx of content and limited amount of storage, Myel nodes must decide how to best allocate and replicate content with their peers. Here we introduce the content distribution system behind the Myel network.'
 date: '2021-01-09T05:35:07.322Z'
 author:

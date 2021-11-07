@@ -1,6 +1,6 @@
 ---
 title: 'Fine-Tuning Myel Network Economics'
-coverImage: '/assets/blog/knob.jpeg'
+coverImage: '/assets/blog/particlescreen.jpeg'
 excerpt: 'In which we model the network economics to explore how much client may expect to pay and how much providers may earn.'
 date: '2021-02-02T05:35:07.322Z'
 author:

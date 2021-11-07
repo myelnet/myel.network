@@ -11,7 +11,6 @@ type Props = {
 export default function PostCollection({posts}: Props) {
   return (
     <section>
-      <h2 className={styles.title}>Latest Posts</h2>
       <div className={styles.container}>
         {posts.map((post) => (
           <PostPreview

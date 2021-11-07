@@ -43,9 +43,6 @@ export default function Home() {
       setContent(records);
     }
   }, [deferred]);
-  useLayoutEffect(() => {
-    document.body.dataset.theme = 'dark';
-  });
   return (
     <>
       <Head

@@ -1,6 +1,6 @@
 ---
 title: 'Myel Technical Update'
-coverImage: '/assets/blog/TechSketch.svg'
+coverImage: '/assets/blog/arcs.jpeg'
 excerpt: 'Yesterday we presented a technical overview of our approach building Myel point of presence nodes at a Filecoin builders mini summit. Here is a recap of what we shared during the presentation.'
 date: '2021-04-27T15:13:07.322Z'
 author:

@@ -1,17 +1,34 @@
 .container {
-  margin: auto;
-  max-width: 1024px;
+  width: 100%;
   padding: 4rem 22px;
+  overflow: hidden;
+}
+
+.container > article {
+  max-width: 669px;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+.container > section {
+  margin: auto;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem !important;
+  max-width: 500px;
+}
+
+.header h1 {
+  max-width: 380px;
 }
 
 .header h4 {
-  font-weight: 400;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 380px;
 }
 
 .headerSmall h2:hover {
@@ -26,6 +43,6 @@
 
 @media (min-width: 1024px) {
   .container h1 {
-    font-size: 6.25rem;
+    font-size: 72px;
   }
 }

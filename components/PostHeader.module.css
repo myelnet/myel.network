@@ -6,14 +6,16 @@
 
 .container {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container h1 {
+  font-size: 38px;
+  text-align: center;
   margin-bottom: 3rem;
-}
-
-.container .avatarWide {
-  display: none;
+  max-width: 562px;
 }
 
 .container .avatar {
@@ -21,24 +23,18 @@
 }
 
 .cover {
+  width: 100%;
   margin-bottom: 2rem;
   height: 0;
   position: relative;
   padding-bottom: 50%;
   overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(178, 178, 178, 0.2);
 }
 
 .date {
   color: #86868b;
+  margin-bottom: 20px;
 }
 
-@media (min-width: 768px) {
-   .container .avatarWide {
-    display: block;
-    margin-bottom: 3rem;
-  }
-
-  .container .avatar {
-    display: none;
-  }
-}
