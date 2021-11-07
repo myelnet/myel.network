@@ -31,7 +31,8 @@
 .framebackground {
   position: absolute;
   pointer-events: none;
-  top: -24px;
+  right: -200px;
+  top: -20px;
   opacity: 0;
   transition: opacity ease 300ms;
 }

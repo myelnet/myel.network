@@ -28,7 +28,13 @@ export default function PostPreview({
   return (
     <div className={styles.preview}>
       <div className={styles.framebackground}>
-        <Image src={backroundBlur} alt="blur" height={1200} width={1200} />
+        <Image
+          src={backroundBlur}
+          alt="blur"
+          height={500}
+          width={900}
+          layout="fixed"
+        />
       </div>
 
       <div className={styles.date}>
