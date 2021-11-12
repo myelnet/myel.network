@@ -82,9 +82,12 @@ export default function Nav() {
               </NavLink>
             </li>
             <li className={styles.navBtn}>
-              <NavLink href="/sign-up" activeClassName={styles.navMenuActive}>
-                <a onClick={() => setOpen(false)}>run a node</a>
-              </NavLink>
+              <a
+                href="https://discord.gg/JV5yURUw"
+                target="_blank"
+                onClick={() => setOpen(false)}>
+                join our discord
+              </a>
             </li>
           </ul>
         </div>

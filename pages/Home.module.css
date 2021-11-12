@@ -740,6 +740,10 @@
     width: 700px;
     height: 700px;
   }
+  .framebackground, .framebackground2 {
+    max-width: 100%;
+    top: 90px;
+  }
 }
 
 .pageSkeleton {
