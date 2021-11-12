@@ -2,6 +2,9 @@
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -12,13 +15,11 @@
 .text h5 {
   margin-block: 2rem 0.7rem;
   margin-inline: 0;
+  color: rgba(255, 255, 255, 1);
 }
 
 .text p {
   margin-bottom: 1rem;
-  line-height: 28px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .text a {
@@ -34,4 +35,14 @@
   margin-bottom: 1rem;
 }
 
+.text ul {
+  padding-left: 2em;
+  list-style-type: disc;
+  margin-bottom: 1rem;
+}
+
+.text li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
 
