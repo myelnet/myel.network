@@ -1,6 +1,6 @@
 ---
 title: 'Myel update: dCDN building blocks and browser client'
-coverImage: '/assets/blog/arcs.jpeg'
+coverImage: '/assets/blog/devices_illu.jpg'
 excerpt: 'Myel development update'
 date: '2021-11-12T09:46:40.488Z'
 author:
