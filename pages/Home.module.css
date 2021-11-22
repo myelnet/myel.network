@@ -134,6 +134,59 @@
   padding-top: 11px;
 }
 
+.logobox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  width: 100%;
+  max-width: 500px;
+  height: 148px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoFig:hover > .logoLabel {
+  opacity: 1;
+}
+
+.logoFig:hover .logoImg {
+  transform: translateY(-16px);
+}
+
+.logoFig:hover .logoGlow {
+  transform: translateY(-16px);
+}
+
+.logoImg, .logoGlow {
+  transform: translateX(0px);
+  transition: transform 300ms ease;
+}
+
+.logoGlow {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  top: -8px;
+}
+
+.logoLabel {
+  size: 14px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 24px;
+  opacity: 0;
+  transition: opacity 300ms ease 100ms;
+}
+
+.logoFig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
 .headline {
   font-size: 36px;
   color: var(--color-text-secondary);
@@ -732,6 +785,24 @@
 .framelist {
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+.logobox {
+  flex-wrap: wrap;
+  height: 345px;
+}
+
+.logoLink {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.logoLabel {
+  opacity: 1;
+}
+.logoFig {
+  margin-top: -32px;
 }
 }
 

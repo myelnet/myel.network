@@ -17,6 +17,14 @@ import PeerRow from '../components/PeerRow';
 import logoColor from '../public/LogoColor.svg';
 import logoBackground from '../public/LogoBackground.svg';
 import backroundBlur from '../public/BackgroundBlur.png';
+import ipfsLogo from '../public/ipfs@2x.png';
+import ipfsLogoGlow from '../public/ipfs-blur.png';
+import ipldLogo from '../public/ipld@2x.png';
+import ipldLogoGlow from '../public/ipld-blur.png';
+import libp2pLogo from '../public/libp2p@2x.png';
+import libp2pLogoGlow from '../public/libp2p-blur.png';
+import filecoinLogo from '../public/filecoin@2x.png';
+import filecoinLogoGlow from '../public/filecoin-blur.png';
 import humanFileSize from '../utils/humanFileSize';
 import usePeers from '../utils/usePeers';
 
@@ -76,6 +84,79 @@ export default function Home() {
             <strong>peer-to-peer</strong> to suit the long-term needs of{' '}
             <strong>web3</strong> applications.
           </h2>
+        </section>
+        <section className={styles.section}>
+          <span className={styles.tag}>powered by</span>
+          <div className={styles.logobox}>
+            <a
+              href="https://filecoin.io"
+              target="_blank"
+              className={styles.logoLink}>
+              <figure className={styles.logoFig}>
+                <div className={styles.logoGlow} aria-hidden="true">
+                  <NextImage src={filecoinLogoGlow} alt="Filecoin logo" />
+                </div>
+
+                <NextImage
+                  src={filecoinLogo}
+                  alt="Filecoin logo"
+                  className={styles.logoImg}
+                />
+                <div className={styles.logoLabel}>Filecoin</div>
+              </figure>
+            </a>
+            <a
+              href="https://ipfs.io"
+              target="_blank"
+              className={styles.logoLink}>
+              <figure className={styles.logoFig}>
+                <div className={styles.logoGlow} aria-hidden="true">
+                  <NextImage src={ipfsLogoGlow} alt="IPFS logo" />
+                </div>
+
+                <NextImage
+                  src={ipfsLogo}
+                  alt="IPFS Logo"
+                  className={styles.logoImg}
+                />
+                <div className={styles.logoLabel}>IPFS</div>
+              </figure>
+            </a>
+            <a
+              href="https://ipld.io"
+              target="_blank"
+              className={styles.logoLink}>
+              <figure className={styles.logoFig}>
+                <div className={styles.logoGlow} aria-hidden="true">
+                  <NextImage src={ipldLogoGlow} alt="IPLD logo" />
+                </div>
+
+                <NextImage
+                  src={ipldLogo}
+                  alt="IPLD Logo"
+                  className={styles.logoImg}
+                />
+                <div className={styles.logoLabel}>IPLD</div>
+              </figure>
+            </a>
+            <a
+              href="https://libp2p.io"
+              target="_blank"
+              className={styles.logoLink}>
+              <figure className={styles.logoFig}>
+                <div className={styles.logoGlow} aria-hidden="true">
+                  <NextImage src={libp2pLogoGlow} alt="Libp2p logo" />
+                </div>
+
+                <NextImage
+                  src={libp2pLogo}
+                  alt="Libp2p logo"
+                  className={styles.logoImg}
+                />
+                <div className={styles.logoLabel}>Libp2p</div>
+              </figure>
+            </a>
+          </div>
         </section>
         <section className={styles.section} id="try">
           <h2 className={styles.sectionTitle2}>Try it out!</h2>
