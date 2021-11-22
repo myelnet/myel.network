@@ -1,6 +1,6 @@
 ---
 title: 'The road to a decentralized CDN'
-coverImage: '/assets/blog/device-pile.jpg'
+coverImage: '/assets/blog/arcs.jpeg'
 excerpt: "How we're building a path from today’s browsers and native platforms towards a web browsing future with native integration of p2p networking and wallet stacks."
 date: '2021-11-22T03:45:04.794Z'
 author:
