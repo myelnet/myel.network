@@ -83,7 +83,7 @@ export default function Nav() {
             </li>
             <li className={styles.navBtn}>
               <a
-                href="https://discord.gg/JV5yURUw"
+                href="https://discord.link/myel"
                 target="_blank"
                 onClick={() => setOpen(false)}>
                 join our discord
