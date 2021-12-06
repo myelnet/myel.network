@@ -16,7 +16,7 @@ export type Peer = {
 };
 
 export type Content = {
-  cid: string;
+  hash: string;
   size: number;
   peer: string;
 };
@@ -39,8 +39,12 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     setFile(files[0]);
     submit(files[0])
       .then((items) => {
-        setContent(items);
-        onComplete(items);
+        const results = items
+          .map((result) =>
+            result.status === 'fulfilled' ? result.value : null
+          )
+          .filter(Boolean);
+        setContent(results);
         setLoading(false);
       })
       .catch((err) => {
@@ -54,6 +58,10 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
     setFile(null);
     setOpen(false);
     setError(false);
+    if (content.length) {
+      onComplete(content);
+      setContent([]);
+    }
   };
 
   const put = async (file: File, addr: Peer): Promise<Content> => {
@@ -69,7 +77,7 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
       throw new Error('provider did not return CID');
     }
     return {
-      cid: rootCID,
+      hash: rootCID,
       size: file.size,
       peer: peerAddr(addr),
     };
@@ -77,8 +85,9 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
 
   // replicate with 4 peers only. We don't want this demo to stress the network too much yet.
   // TODO: make this adjustable
-  const submit = async (file: File): Promise<Content[]> => {
-    return Promise.all(peers.slice(0, 4).map((addr) => put(file, addr)));
+  const submit = (file: File): Promise<PromiseSettledResult<Content>[]> => {
+    const promises = peers.slice(0, 4).map((addr) => put(file, addr));
+    return Promise.allSettled(promises);
   };
 
   return (
@@ -101,7 +110,9 @@ export default function Uploader({peers, onComplete}: UploaderProps) {
             <div className={styles.successContent}>
               <span className={styles.taglight}>✅ File uploaded</span>
               <h2>
-                <strong>{file.name}</strong>
+                <strong>
+                  {file.name.slice(0, 8)}...{file.name.split('.').pop()}
+                </strong>
               </h2>
               <h2>{humanFileSize(file.size)}</h2>
               <div className={styles.fineprint}>

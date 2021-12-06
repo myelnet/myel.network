@@ -42,12 +42,12 @@ export default function Home() {
   useEffect(() => {
     const records: Content[] = deferred?.map((def, i) => {
       return {
-        cid: def.k.split(':')[0],
+        hash: def.k.split(':')[0],
         size: def.s,
         peer: def.v,
       };
     });
-    if (records.length > 0) {
+    if (records.length > 0 && records.length != content.length) {
       setContent(records);
     }
   }, [deferred]);
@@ -206,7 +206,7 @@ export default function Home() {
                     <Uploader
                       peers={selectedPeers}
                       onComplete={(added) => {
-                        setContent(content.concat(added));
+                        setContent([...added, ...content]);
                         setMode('retrieve');
                       }}
                     />
