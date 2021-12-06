@@ -15,7 +15,7 @@ type RetrieverProps = {
 type ContentEntry = {
   name: string;
   size: number;
-  cid: string;
+  hash: string;
 };
 
 const WORKER_URL = 'https://client.myel.workers.dev/';
@@ -28,7 +28,7 @@ export default function Retriever({peers, content}) {
     acc[p.id] = p;
     return acc;
   }, {});
-  const clist = content
+  const clist: Content[] = content
     .filter((c) => !!peermap[new Multiaddr(c.peer).getPeerId()])
     .map((c) => {
       const peer = {
@@ -42,7 +42,7 @@ export default function Retriever({peers, content}) {
     try {
       setLoading(true);
       const entries = await fetch(
-        WORKER_URL + content.cid + '?peer=' + content.peer,
+        WORKER_URL + content.hash + '?peer=' + content.peer,
         {
           headers: {
             Accept: 'application/json',
@@ -67,12 +67,12 @@ export default function Retriever({peers, content}) {
           <u className={styles.framescroller}>
             {clist.map((c) => (
               <li
-                key={c.cid + c.peer}
+                key={c.hash + c.peer}
                 className={styles.contentRow}
                 onClick={() => retrieve(c)}>
                 <div className={styles.peerHeading}>
                   <div>
-                    {c.cid.slice(0, 8)}...{c.cid.slice(-8)}
+                    {c.hash.slice(0, 8)}...{c.hash.slice(-8)}
                   </div>
                   <div>{humanFileSize(c.size)}</div>
                 </div>
@@ -100,11 +100,11 @@ export default function Retriever({peers, content}) {
         <div className={styles.framescroll}>
           <u className={styles.framescroller}>
             {entries?.map((e) => (
-              <li key={e.cid} className={styles.contentRow}>
+              <li key={e.hash} className={styles.contentRow}>
                 <a
                   href={
                     WORKER_URL +
-                    selected.cid +
+                    selected.hash +
                     '/' +
                     e.name +
                     '?peer=' +
@@ -115,7 +115,7 @@ export default function Retriever({peers, content}) {
                   <div className={styles.peerHeading}>
                     <div>{e.name}</div>
                     <div>
-                      {e.cid.slice(0, 8)}...{e.cid.slice(-8)}
+                      {e.hash.slice(0, 8)}...{e.hash.slice(-8)}
                     </div>
                   </div>
                   <div className={styles.peerData}>{humanFileSize(e.size)}</div>
