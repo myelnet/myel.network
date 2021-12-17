@@ -46,3 +46,7 @@
   text-align: -webkit-match-parent;
 }
 
+.text strong {
+  color: #FFF;
+}
+
